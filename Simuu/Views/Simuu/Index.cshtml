@@ -1,0 +1,147 @@
+﻿@model IEnumerable<BusinessLogicLayer.SimuuBLL>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SimuuID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SimuuName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SimuuAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SimuuBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SimuuDeath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SimuuCoordinates)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImpulseToRest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImpulseToDrink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImpulseToEat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatEnergy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatThirst)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatHunger)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SimuuMovementSpeed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SimuuSenseRadius)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PasswordHash)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PasswordSalt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SimuuID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SimuuName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SimuuAge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SimuuBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SimuuDeath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SimuuCoordinates)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpulseToRest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpulseToDrink)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpulseToEat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatEnergy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatThirst)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatHunger)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SimuuMovementSpeed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SimuuSenseRadius)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PasswordHash)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PasswordSalt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

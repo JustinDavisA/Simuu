@@ -1,0 +1,5 @@
+C:\Users\Onshore\source\repos\Simuu\LoggingLayer\bin\Debug\LoggingLayer.dll
+C:\Users\Onshore\source\repos\Simuu\LoggingLayer\bin\Debug\LoggingLayer.pdb
+C:\Users\Onshore\source\repos\Simuu\LoggingLayer\obj\Debug\LoggingLayer.csproj.CoreCompileInputs.cache
+C:\Users\Onshore\source\repos\Simuu\LoggingLayer\obj\Debug\LoggingLayer.dll
+C:\Users\Onshore\source\repos\Simuu\LoggingLayer\obj\Debug\LoggingLayer.pdb

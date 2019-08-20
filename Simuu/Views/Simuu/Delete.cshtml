@@ -1,0 +1,184 @@
+﻿@model BusinessLogicLayer.SimuuBLL
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>SimuuBLL</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SimuuID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SimuuID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SimuuName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SimuuName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SimuuAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SimuuAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SimuuBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SimuuBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SimuuDeath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SimuuDeath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SimuuCoordinates)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SimuuCoordinates)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImpulseToRest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImpulseToRest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImpulseToDrink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImpulseToDrink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImpulseToEat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImpulseToEat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatEnergy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatEnergy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatThirst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatThirst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatHunger)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatHunger)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SimuuMovementSpeed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SimuuMovementSpeed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SimuuSenseRadius)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SimuuSenseRadius)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PasswordHash)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PasswordHash)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PasswordSalt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PasswordSalt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoleID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
