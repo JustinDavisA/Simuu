@@ -12,6 +12,8 @@ namespace Simuu
     {
         protected void Application_Start()
         {
+            ApplicationConfig.RegisterAplicationVariables();
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

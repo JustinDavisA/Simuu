@@ -10,7 +10,29 @@ namespace Simuu.Controllers
 {
     public class UserController : Controller
     {
-        // CREATE: List of Roles for drop-down selection in CREATE: User
+        // Pagination for Users
+        public ActionResult Page(int PageNumber, int PageSize)
+        {
+            ViewBag.PageNumber = PageNumber;
+            ViewBag.PageSize = PageSize;
+            List<UserBLL> Model = new List<UserBLL>();
+            try
+            {
+                using (ContextBLL ctx = new ContextBLL())
+                {
+                    ViewBag.TotalRoleCount = ctx.Users_ObtainCount();
+                    Model = ctx.Users_Get(PageNumber * PageSize, PageSize);
+                }
+                return View("Index", Model);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Exception = ex;
+                return View("Error");
+            }
+        }
+
+        // Create a List of Roles for drop-down selection in CREATE: User
         List<SelectListItem> GetRoleItems()
         {
             List<SelectListItem> ProposedReturnValue = new List<SelectListItem>();
@@ -91,9 +113,9 @@ namespace Simuu.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            catch (Exception Ex)
+            catch (Exception ex)
             {
-                ViewBag.Exception = Ex;
+                ViewBag.Exception = ex;
                 return View("Error");
             }
         }
@@ -135,9 +157,9 @@ namespace Simuu.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            catch (Exception Ex)
+            catch (Exception ex)
             {
-                ViewBag.Exception = Ex;
+                ViewBag.Exception = ex;
                 return View("Error");
             }
         }
@@ -178,9 +200,9 @@ namespace Simuu.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch (Exception Ex)
+            catch (Exception ex)
             {
-                ViewBag.Exception = Ex;
+                ViewBag.Exception = ex;
                 return View("Error");
             }
         }
