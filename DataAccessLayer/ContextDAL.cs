@@ -614,7 +614,7 @@ namespace DataAccessLayer
         #region USERS
 
         // ----- Create ----- //
-        public int User_Create(string userName, string userEmail, string passwordHash, string passwordSalt)
+        public int User_Create(string userName, string userEmail, string passwordHash, string passwordSalt, int roleID)
         {
             int proposedReturnValue = -1;
             try
@@ -627,6 +627,7 @@ namespace DataAccessLayer
                     command.Parameters.AddWithValue("@UserEmail", userEmail);
                     command.Parameters.AddWithValue("@PasswordHash", passwordHash);
                     command.Parameters.AddWithValue("@PasswordSalt", passwordSalt);
+                    command.Parameters.AddWithValue("@RoleID", roleID);
                     command.Parameters.AddWithValue("@UserID", 0);
                     command.Parameters["@UserID"].Direction = System.Data.ParameterDirection.Output;
                     command.ExecuteNonQuery();

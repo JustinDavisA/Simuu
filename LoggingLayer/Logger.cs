@@ -37,7 +37,7 @@ namespace LoggingLayer
                     connection.Open();
                     using (var command = connection.CreateCommand())
                     {
-                        command.CommandText = "InsertLogItem";
+                        command.CommandText = "Log_Insert";
                         command.CommandType = System.Data.CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@Message", ex.Message);
                         command.Parameters.AddWithValue("@StackTrace", ex.StackTrace.ToString());

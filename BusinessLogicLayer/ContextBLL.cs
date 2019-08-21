@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using DataAccessLayer;
+using DataAccessLayer;  `                                                                                                                                                       
 
 namespace BusinessLogicLayer
 {
@@ -289,17 +289,17 @@ namespace BusinessLogicLayer
         #region USERS
 
         // ----- Create ----- //
-        public int User_Create(string userName, string userEmail, string passwordHash, string passwordSalt)
+        public int User_Create(string userName, string userEmail, string passwordHash, string passwordSalt, int roleID)
         {
             int proposedReturnValue = -1;
-            proposedReturnValue = _context.User_Create(userName, userEmail, passwordHash, passwordSalt);
+            proposedReturnValue = _context.User_Create(userName, userEmail, passwordHash, passwordSalt, roleID);
             return proposedReturnValue;
         }
 
         public int User_Create(UserBLL user)
         {
             int proposedReturnValue = -1;
-            proposedReturnValue = _context.User_Create(user.UserName, user.UserEmail, user.PasswordHash, user.PasswordSalt);
+            proposedReturnValue = _context.User_Create(user.UserName, user.UserEmail, user.PasswordHash, user.PasswordSalt, user.RoleID);
             return proposedReturnValue;
         }
 
