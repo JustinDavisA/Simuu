@@ -53,20 +53,7 @@ namespace Simuu.Controllers
         // GET: User
         public ActionResult Index()
         {
-            List<UserBLL> model = new List<UserBLL>();
-            try
-            {
-                using (ContextBLL ctx = new ContextBLL())
-                {
-                    model = ctx.Users_Get(0, 20);
-                }
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Exception = ex;
-                return View("Error");
-            }
-            return View(model);
+            return RedirectToRoute(new { Controller = "User", Action = "Page", PageNumber = 0, PageSize = ApplicationConfig.DefaultPageSize });
         }
 
         // GET: User/Details/5

@@ -91,9 +91,9 @@ namespace Simuu.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            catch (Exception Ex)
+            catch (Exception ex)
             {
-                ViewBag.Exception = Ex;
+                ViewBag.Exception = ex;
                 return View("Error");
             }
         }
