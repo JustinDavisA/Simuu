@@ -10,6 +10,7 @@ namespace Simuu.Controllers
 {
     public class UserController : Controller
     {
+
         // Pagination for Users
         public ActionResult Page(int PageNumber, int PageSize)
         {
