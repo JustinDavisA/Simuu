@@ -172,7 +172,7 @@
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\Simuu\Create.cshtml" />
-    <Content Include="Views\Simuu\Read.cshtml" />
+    <Content Include="Views\Simuu\Details.cshtml" />
     <Content Include="Views\Simuu\Edit.cshtml" />
     <Content Include="Views\Simuu\Delete.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
@@ -180,8 +180,8 @@
     <Content Include="Views\Role\Delete.cshtml" />
     <Content Include="Views\Item\Delete.cshtml" />
     <Content Include="Views\Item\Edit.cshtml" />
-    <Content Include="Views\Item\Read.cshtml" />
-    <Content Include="Views\Role\Read.cshtml" />
+    <Content Include="Views\Item\Details.cshtml" />
+    <Content Include="Views\Role\Details.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Item\Index.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />

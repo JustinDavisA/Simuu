@@ -325,7 +325,6 @@ namespace DataAccessLayer
             {
                 // No access to scope - Exception thrown before entering
             }
-
             return proposedReturnValue;
         }
 
@@ -450,7 +449,7 @@ namespace DataAccessLayer
             try
             {
                 EnsureConnected();
-                using (SqlCommand command = new SqlCommand("GetSimuus", _connection))
+                using (SqlCommand command = new SqlCommand("Simuus_Get", _connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@Skip", skip);
@@ -479,7 +478,7 @@ namespace DataAccessLayer
             try
             {
                 EnsureConnected();
-                using (SqlCommand command = new SqlCommand("ObtainSimuuCount", _connection))
+                using (SqlCommand command = new SqlCommand("Simuu_ObtainCount", _connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     object answer = command.ExecuteScalar();
@@ -500,7 +499,7 @@ namespace DataAccessLayer
             try
             {
                 EnsureConnected();
-                using (SqlCommand command = new SqlCommand("GetSimuusRelatedToUserID", _connection))
+                using (SqlCommand command = new SqlCommand("Simuus_GetRelatedToUserID", _connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@UserID", userID);
@@ -530,7 +529,7 @@ namespace DataAccessLayer
             try
             {
                 EnsureConnected();
-                using (SqlCommand command = new SqlCommand("FindSimuuBySimuuID", _connection))
+                using (SqlCommand command = new SqlCommand("Simuu_FindBySimuuID", _connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@SimuuID", simuuID);
