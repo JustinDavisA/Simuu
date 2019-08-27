@@ -16,15 +16,15 @@ namespace Simuu.Controllers
         {
             ViewBag.PageNumber = PageNumber;
             ViewBag.PageSize = PageSize;
-            List<SimuuBLL> Model = new List<SimuuBLL>();
+            List<SimuuBLL> model = new List<SimuuBLL>();
             try
             {
                 using (ContextBLL ctx = new ContextBLL())
                 {
-                    ViewBag.TotalRoleCount = ctx.Users_ObtainCount();
-                    Model = ctx.Simuus_Get(PageNumber * PageSize, PageSize);
+                    ViewBag.TotalCount = ctx.Simuus_ObtainCount();
+                    model = ctx.Simuus_Get(PageNumber * PageSize, PageSize);
                 }
-                return View("Index", Model);
+                return View("Index", model);
             }
             catch (Exception ex)
             {
@@ -33,22 +33,22 @@ namespace Simuu.Controllers
             }
         }
 
-        // Create a List of Roles for drop-down selection in CREATE: User
-        List<SelectListItem> GetRoleItems()
+        // Create a List of Roles for drop-down selection
+        List<SelectListItem> GetUserItems()
         {
-            List<SelectListItem> ProposedReturnValue = new List<SelectListItem>();
+            List<SelectListItem> proposedReturnValue = new List<SelectListItem>();
             using (ContextBLL ctx = new ContextBLL())
             {
-                List<RoleBLL> roles = ctx.Roles_Get(0, 25);
-                foreach (RoleBLL role in roles)
+                List<UserBLL> users = ctx.Users_Get(0, 25);
+                foreach (UserBLL user in users)
                 {
                     SelectListItem item = new SelectListItem();
-                    item.Value = role.RoleID.ToString();
-                    item.Text = role.RoleName;
-                    ProposedReturnValue.Add(item);
+                    item.Value = user.UserID.ToString();
+                    item.Text = user.UserName;
+                    proposedReturnValue.Add(item);
                 }
             }
-            return ProposedReturnValue;
+            return proposedReturnValue;
         }
 
         // GET: Simuu
@@ -85,7 +85,7 @@ namespace Simuu.Controllers
         {
             SimuuBLL defSimuu = new SimuuBLL();
             defSimuu.UserID = 0;
-            ViewBag.Roles = GetRoleItems();
+            ViewBag.Users = GetUserItems();
             return View(defSimuu);
         }
 
@@ -128,7 +128,7 @@ namespace Simuu.Controllers
                 ViewBag.Exception = ex;
                 return View("Error");
             }
-            ViewBag.Roles = GetRoleItems();
+            ViewBag.Users = GetUserItems();
             return View(simuu);
         }
 

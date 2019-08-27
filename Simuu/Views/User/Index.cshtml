@@ -4,8 +4,8 @@
     ViewBag.Title = "Index";
     int PageNumber = ViewBag.PageNumber;
     int PageSize = ViewBag.PageSize;
-    int TotalRoleCount = ViewBag.TotalRoleCount;
-    int TotalPageButtonCount = ((TotalRoleCount % PageSize == 0)?0:1) + TotalRoleCount / PageSize;
+    int TotalCount = ViewBag.TotalCount;
+    int TotalPageButtonCount = ((TotalCount % PageSize == 0)?0:1) + TotalCount / PageSize;
     int CorrectedPageButtonCount = (TotalPageButtonCount > 9) ? 10 : TotalPageButtonCount;
 }
 
@@ -27,9 +27,9 @@
 
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.UserID)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
@@ -39,27 +39,27 @@
         <th>
             @Html.DisplayNameFor(model => model.PasswordHash)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.PasswordSalt)
-        </th>
-        <th>
+        </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.RoleID)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.RoleName)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.RolePermissions)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.UserID)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
@@ -69,18 +69,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PasswordHash)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.PasswordSalt)
-            </td>
-            <td>
+            </td>*@
+            @*<td>
                 @Html.DisplayFor(modelItem => item.RoleID)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.RoleName)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.RolePermissions)
-            </td>
+            </td>*@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.UserID }) |

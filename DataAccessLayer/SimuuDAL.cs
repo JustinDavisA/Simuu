@@ -35,8 +35,8 @@ namespace DataAccessLayer
         // ----- Users Properties ----- //
         public string UserName { get; set; }
         public string UserEmail { get; set; }
-        public int PasswordHash { get; set; }
-        public int PasswordSalt { get; set; }
+        public string PasswordHash { get; set; }
+        public string PasswordSalt { get; set; }
         public int RoleID { get; set; }
 
         #endregion

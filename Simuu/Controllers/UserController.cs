@@ -16,15 +16,15 @@ namespace Simuu.Controllers
         {
             ViewBag.PageNumber = PageNumber;
             ViewBag.PageSize = PageSize;
-            List<UserBLL> Model = new List<UserBLL>();
+            List<UserBLL> model = new List<UserBLL>();
             try
             {
                 using (ContextBLL ctx = new ContextBLL())
                 {
-                    ViewBag.TotalRoleCount = ctx.Users_ObtainCount();
-                    Model = ctx.Users_Get(PageNumber * PageSize, PageSize);
+                    ViewBag.TotalCount = ctx.Users_ObtainCount();
+                    model = ctx.Users_Get(PageNumber * PageSize, PageSize);
                 }
-                return View("Index", Model);
+                return View("Index", model);
             }
             catch (Exception ex)
             {
@@ -33,10 +33,10 @@ namespace Simuu.Controllers
             }
         }
 
-        // Create a List of Roles for drop-down selection in CREATE: User
+        // Create a List of Roles for drop-down selection
         List<SelectListItem> GetRoleItems()
         {
-            List<SelectListItem> ProposedReturnValue = new List<SelectListItem>();
+            List<SelectListItem> proposedReturnValue = new List<SelectListItem>();
             using (ContextBLL ctx = new ContextBLL())
             {
                 List<RoleBLL> roles = ctx.Roles_Get(0, 25);
@@ -45,10 +45,10 @@ namespace Simuu.Controllers
                     SelectListItem item = new SelectListItem();
                     item.Value = role.RoleID.ToString();
                     item.Text = role.RoleName;
-                    ProposedReturnValue.Add(item);
+                    proposedReturnValue.Add(item);
                 }
             }
-            return ProposedReturnValue;
+            return proposedReturnValue;
         }
 
         // GET: User

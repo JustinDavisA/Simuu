@@ -129,6 +129,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Constraints.cs" />
+    <Compile Include="Models\Filters.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -187,10 +191,16 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Simuu\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Shared\NotLoggedIn.cshtml" />
+    <Content Include="Views\Shared\ActionNotAllowed.cshtml" />
+    <Content Include="Views\Shared\AlreadyHashed.cshtml" />
+    <Content Include="Views\Shared\ItemNotFound.cshtml" />
+    <Content Include="Views\Shared\NotYourItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
