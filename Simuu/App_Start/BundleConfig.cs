@@ -25,6 +25,10 @@ namespace Simuu
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Views/Home/script.js"));
         }
     }
 }
