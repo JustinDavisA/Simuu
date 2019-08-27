@@ -157,6 +157,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\SimulationController.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -198,6 +199,8 @@
     <Content Include="Views\Shared\AlreadyHashed.cshtml" />
     <Content Include="Views\Shared\ItemNotFound.cshtml" />
     <Content Include="Views\Shared\NotYourItem.cshtml" />
+    <Content Include="Views\Home\Simulation.cshtml" />
+    <Content Include="Views\Home\TEST.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

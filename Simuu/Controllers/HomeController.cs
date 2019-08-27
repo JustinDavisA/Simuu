@@ -29,6 +29,20 @@ namespace Simuu.Controllers
             return View();
         }
 
+        public ActionResult Simulation()
+        {
+            ViewBag.Message = "Your Simulation page.";
+
+            return View();
+        }
+
+        public ActionResult TEST()
+        {
+            ViewBag.Message = "Your Simulation page.";
+
+            return View();
+        }
+
         public ActionResult Register()
         {
             return View();
