@@ -23,10 +23,23 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Roles", "Index", "Role")</li>
-                    <li>@Html.ActionLink("Users", "Index", "User")</li>
-                    <li>@Html.ActionLink("Simuus", "Index", "Simuu")</li>
-                    <li>@Html.ActionLink("Items", "Index", "Item")</li>
+                    @if (User.IsInRole(Constraints.AdminRoleName))
+                    {
+                        <li>@Html.ActionLink("Roles", "Index", "Role")</li>
+                        <li>@Html.ActionLink("Users", "Index", "User")</li>
+                        <li>@Html.ActionLink("Simuus", "Index", "Simuu")</li>
+                        <li>@Html.ActionLink("Items", "Index", "Item")</li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Welcome " + User.Identity.Name, "Index", "Home") </li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Register", "Register", "Home")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                    }
                 </ul>
             </div>
         </div>

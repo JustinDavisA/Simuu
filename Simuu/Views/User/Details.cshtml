@@ -4,19 +4,19 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Read</h2>
+<h2>Details</h2>
 
 <div>
     <h4>UserBLL</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.UserID)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.UserID)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.UserName)
@@ -42,21 +42,21 @@
             @Html.DisplayFor(model => model.PasswordHash)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.PasswordSalt)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.PasswordSalt)
-        </dd>
+        </dd>*@
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.RoleID)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.RoleID)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.RoleName)
@@ -66,17 +66,17 @@
             @Html.DisplayFor(model => model.RoleName)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.RolePermissions)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.RolePermissions)
-        </dd>
+        </dd>*@
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

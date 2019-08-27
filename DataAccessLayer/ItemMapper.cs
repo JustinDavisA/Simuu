@@ -46,23 +46,20 @@ namespace DataAccessLayer
             Assert(5 == offsetToUserID, $"UserID is {offsetToUserID}, not 5 as expected");
 
             // ----- Users ----- //
-            offsetToUserID = reader.GetOrdinal("UserID");
-            Assert(6 == offsetToUserID, $"UserID is {offsetToUserID}, not 6 as expected");
-
             offsetToUserName = reader.GetOrdinal("UserName");
-            Assert(7 == offsetToUserName, $"UserName is {offsetToUserName}, not 7 as expected");
+            Assert(6 == offsetToUserName, $"UserName is {offsetToUserName}, not 6 as expected");
 
             offsetToUserEmail = reader.GetOrdinal("UserEmail");
-            Assert(8 == offsetToUserEmail, $"UserEmail is {offsetToUserEmail}, not 8 as expected");
+            Assert(7 == offsetToUserEmail, $"UserEmail is {offsetToUserEmail}, not 7 as expected");
 
             offsetToPasswordHash = reader.GetOrdinal("PasswordHash");
-            Assert(9 == offsetToPasswordHash, $"PasswordHash is {offsetToPasswordHash}, not 9 as expected");
+            Assert(8 == offsetToPasswordHash, $"PasswordHash is {offsetToPasswordHash}, not 8 as expected");
 
             offsetToPasswordSalt = reader.GetOrdinal("PasswordSalt");
-            Assert(10 == offsetToPasswordSalt, $"PasswordSalt is {offsetToPasswordSalt}, not 10 as expected");
+            Assert(9 == offsetToPasswordSalt, $"PasswordSalt is {offsetToPasswordSalt}, not 9 as expected");
 
             offsetToRoleID = reader.GetOrdinal("RoleID");
-            Assert(11 == offsetToRoleID, $"RoleID is {offsetToRoleID}, not 1 as expected");
+            Assert(10 == offsetToRoleID, $"RoleID is {offsetToRoleID}, not 10 as expected");
         }
 
         public ItemDAL ItemFromReader(System.Data.SqlClient.SqlDataReader reader)
@@ -78,7 +75,6 @@ namespace DataAccessLayer
             proposedReturnValue.UserID = reader.GetInt32(offsetToUserID);
 
             // ----- Users ----- //
-            proposedReturnValue.UserID = reader.GetInt32(offsetToUserID);
             proposedReturnValue.UserName = reader.GetString(offsetToUserName);
             proposedReturnValue.UserEmail = reader.GetString(offsetToUserEmail);
             proposedReturnValue.PasswordHash = reader.GetString(offsetToPasswordHash);

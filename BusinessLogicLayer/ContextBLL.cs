@@ -289,17 +289,17 @@ namespace BusinessLogicLayer
         #region USERS
 
         // ----- Create ----- //
-        public int User_Create(string userName, string userEmail, string passwordHash, string passwordSalt)
+        public int User_Create(string userName, string userEmail, string passwordHash, string passwordSalt, int roleID)
         {
             int proposedReturnValue = -1;
-            proposedReturnValue = _context.User_Create(userName, userEmail, passwordHash, passwordSalt);
+            proposedReturnValue = _context.User_Create(userName, userEmail, passwordHash, passwordSalt, roleID);
             return proposedReturnValue;
         }
 
         public int User_Create(UserBLL user)
         {
             int proposedReturnValue = -1;
-            proposedReturnValue = _context.User_Create(user.UserName, user.UserEmail, user.PasswordHash, user.PasswordSalt);
+            proposedReturnValue = _context.User_Create(user.UserName, user.UserEmail, user.PasswordHash, user.PasswordSalt, user.RoleID);
             return proposedReturnValue;
         }
 
@@ -346,6 +346,17 @@ namespace BusinessLogicLayer
             return ProposedReturnValue;
         }
 
+        public UserBLL User_FindByUserUserName(string userName)
+        {
+            UserBLL ProposedReturnValue = null;
+            UserDAL DataLayerObject = _context.User_FindByUserUserName(userName);
+            if (null != DataLayerObject)
+            {
+                ProposedReturnValue = new UserBLL(DataLayerObject);
+            }
+            return ProposedReturnValue;
+        }
+
         public UserBLL User_FindByUserEmail(string userEmail)
         {
             UserBLL ProposedReturnValue = null;
@@ -358,14 +369,14 @@ namespace BusinessLogicLayer
         }
 
         // ----- Update ----- //
-        public void User_JustUpdate(int userID, string userName, string userEmail, string passwordHash, string passwordSalt)
+        public void User_JustUpdate(int userID, string userName, string userEmail, string passwordHash, string passwordSalt, int roleID)
         {
-            _context.User_JustUpdate(userID, userName, userEmail, passwordHash, passwordSalt);
+            _context.User_JustUpdate(userID, userName, userEmail, passwordHash, passwordSalt, roleID);
         }
 
         public void User_JustUpdate(UserBLL user)
         {
-            _context.User_JustUpdate(user.UserID, user.UserName, user.UserEmail, user.PasswordHash, user.PasswordSalt);
+            _context.User_JustUpdate(user.UserID, user.UserName, user.UserEmail, user.PasswordHash, user.PasswordSalt, user.RoleID);
         }
 
         // ----- Delete ----- //

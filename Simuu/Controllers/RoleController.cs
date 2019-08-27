@@ -5,15 +5,40 @@ using System.Web;
 using System.Web.Mvc;
 
 using BusinessLogicLayer;
+using Simuu.Models;
 
 namespace Simuu.Controllers
 {
+    [MustBeInRole(Roles = "Administrator")]
     public class RoleController : Controller
     {
-        // CREATE: List of Roles for drop-down selection in CREATE: Role
+
+        // Pagination for Roles
+        public ActionResult Page(int PageNumber, int PageSize)
+        {
+            ViewBag.PageNumber = PageNumber;
+            ViewBag.PageSize = PageSize;
+            List<RoleBLL> model = new List<RoleBLL>();
+            try
+            {
+                using (ContextBLL ctx = new ContextBLL())
+                {
+                    ViewBag.TotalCount = ctx.Roles_ObtainCount();
+                    model = ctx.Roles_Get(PageNumber * PageSize, PageSize);
+                }
+                return View("Index", model);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Exception = ex;
+                return View("Error");
+            }
+        }
+
+        // CREATE: List of Roles for drop-down selection
         List<SelectListItem> GetRoleItems()
         {
-            List<SelectListItem> ProposedReturnValue = new List<SelectListItem>();
+            List<SelectListItem> proposedReturnValue = new List<SelectListItem>();
             using (ContextBLL ctx = new ContextBLL())
             {
                 List<RoleBLL> roles = ctx.Roles_Get(0, 25);
@@ -22,29 +47,16 @@ namespace Simuu.Controllers
                     SelectListItem item = new SelectListItem();
                     item.Value = role.RoleID.ToString();
                     item.Text = role.RoleName;
-                    ProposedReturnValue.Add(item);
+                    proposedReturnValue.Add(item);
                 }
             }
-            return ProposedReturnValue;
+            return proposedReturnValue;
         }
 
         // GET: Role
         public ActionResult Index()
         {
-            List<RoleBLL> model = new List<RoleBLL>();
-            try
-            {
-                using (ContextBLL ctx = new ContextBLL())
-                {
-                    model = ctx.Roles_Get(0, 20);
-                }
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Exception = ex;
-                return View("Error");
-            }
-            return View(model);
+            return RedirectToRoute(new { Controller = "Role", Action = "Page", PageNumber = 0, PageSize = ApplicationConfig.DefaultPageSize });
         }
 
         // GET: Role/Details/5
@@ -91,9 +103,9 @@ namespace Simuu.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            catch (Exception Ex)
+            catch (Exception ex)
             {
-                ViewBag.Exception = Ex;
+                ViewBag.Exception = ex;
                 return View("Error");
             }
         }

@@ -16,16 +16,23 @@ namespace DataAccessLayer
         int offsetToSimuuBirth;
         int offsetToSimuuDeath;
         int offsetToSimuuCoordinates;
-        // ----- SimuuImpulses ----- //
         int offsetToImpulseToRest;
         int offsetToImpulseToDrink;
         int offsetToImpulseToEat;
-        // ----- SimuuStatistics ----- //
         int offsetToSimuuEnergy;
         int offsetToSimuuThirst;
         int offsetToSimuuHunger;
         int offsetToSimuuMovementSpeed;
         int offsetToSimuuSenseRadius;
+        int offsetToUserID;
+
+
+        // ----- Users ----- //
+        int offsetToUserName;
+        int offsetToUserEmail;
+        int offsetToPasswordHash;
+        int offsetToPasswordSalt;
+        int offsetToRoleID;
 
 
         public SimuuMapper(System.Data.SqlClient.SqlDataReader reader)
@@ -49,7 +56,6 @@ namespace DataAccessLayer
             offsetToSimuuCoordinates = reader.GetOrdinal("SimuuCoordinates");
             Assert(5 == offsetToSimuuCoordinates, $"SimuuCoordinates is {offsetToSimuuCoordinates}, not 5 as expected");
 
-            // ----- Simuu Impulses ----- //
             offsetToImpulseToRest = reader.GetOrdinal("ImpulseToRest");
             Assert(6 == offsetToImpulseToRest, $"ImpulseToRest is {offsetToImpulseToRest}, not 6 as expected");
 
@@ -59,7 +65,6 @@ namespace DataAccessLayer
             offsetToImpulseToEat = reader.GetOrdinal("ImpulseToEat");
             Assert(8 == offsetToImpulseToEat, $"ImpulseToEat is {offsetToImpulseToEat}, not 8 as expected");
 
-            // ----- Simuu Stats ----- //
             offsetToSimuuEnergy = reader.GetOrdinal("StatEnergy");
             Assert(9 == offsetToSimuuEnergy, $"SimuuEnergy is {offsetToSimuuEnergy}, not 9 as expected");
 
@@ -74,6 +79,25 @@ namespace DataAccessLayer
 
             offsetToSimuuSenseRadius = reader.GetOrdinal("StatSenseRadius");
             Assert(13 == offsetToSimuuSenseRadius, $"SimuuSenseRadius is {offsetToSimuuSenseRadius}, not 13 as expected");
+
+            offsetToUserID = reader.GetOrdinal("UserID");
+            Assert(14 == offsetToUserID, $"UserID is {offsetToUserID}, not 14 as expected");
+
+            // ----- Users ----- //
+            offsetToUserName = reader.GetOrdinal("UserName");
+            Assert(15 == offsetToUserName, $"UserName is {offsetToUserName}, not 15 as expected");
+
+            offsetToUserEmail = reader.GetOrdinal("UserEmail");
+            Assert(16 == offsetToUserEmail, $"UserEmail is {offsetToUserEmail}, not 16 as expected");
+
+            offsetToPasswordHash = reader.GetOrdinal("PasswordHash");
+            Assert(17 == offsetToPasswordHash, $"PasswordHash is {offsetToPasswordHash}, not 17 as expected");
+
+            offsetToPasswordSalt = reader.GetOrdinal("PasswordSalt");
+            Assert(18 == offsetToPasswordSalt, $"PasswordSalt is {offsetToPasswordSalt}, not 18 as expected");
+
+            offsetToRoleID = reader.GetOrdinal("RoleID");
+            Assert(19 == offsetToRoleID, $"RoleID is {offsetToRoleID}, not 19 as expected");
         }
 
 
@@ -85,19 +109,25 @@ namespace DataAccessLayer
             proposedReturnValue.SimuuID = reader.GetInt32(offsetToSimuuID);
             proposedReturnValue.SimuuName = reader.GetString(offsetToSimuuName);
             proposedReturnValue.SimuuAge = reader.GetInt32(offsetToSimuuAge);
-            proposedReturnValue.SimuuBirth = reader.GetDateTime(offsetToSimuuBirth);
-            proposedReturnValue.SimuuDeath = reader.GetDateTime(offsetToSimuuDeath);
+            proposedReturnValue.SimuuBirth = GetDateTimeOrDefault(reader, offsetToSimuuBirth, DateTime.MinValue);
+            proposedReturnValue.SimuuDeath = GetDateTimeOrDefault(reader, offsetToSimuuDeath, DateTime.MinValue);
             proposedReturnValue.SimuuCoordinates = reader.GetInt32(offsetToSimuuCoordinates);
-            // ----- SimuuImpulses ----- //
             proposedReturnValue.ImpulseToRest = reader.GetInt32(offsetToImpulseToRest);
             proposedReturnValue.ImpulseToDrink = reader.GetInt32(offsetToImpulseToDrink);
             proposedReturnValue.ImpulseToEat = reader.GetInt32(offsetToImpulseToEat);
-            // ----- Simuu Stats ----- //
             proposedReturnValue.StatEnergy = reader.GetInt32(offsetToSimuuEnergy);
             proposedReturnValue.StatThirst = reader.GetInt32(offsetToSimuuThirst);
             proposedReturnValue.StatHunger = reader.GetInt32(offsetToSimuuHunger);
             proposedReturnValue.SimuuMovementSpeed = reader.GetInt32(offsetToSimuuMovementSpeed);
             proposedReturnValue.SimuuSenseRadius = reader.GetInt32(offsetToSimuuSenseRadius);
+            proposedReturnValue.UserID = reader.GetInt32(offsetToUserID);
+
+            // ----- Users ----- //
+            proposedReturnValue.UserName = reader.GetString(offsetToUserName);
+            proposedReturnValue.UserEmail = reader.GetString(offsetToUserEmail);
+            proposedReturnValue.PasswordHash = reader.GetString(offsetToPasswordHash);
+            proposedReturnValue.PasswordSalt = reader.GetString(offsetToPasswordSalt);
+            proposedReturnValue.RoleID = reader.GetInt32(offsetToRoleID);
 
             return proposedReturnValue;
         }

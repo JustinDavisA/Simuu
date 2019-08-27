@@ -325,7 +325,6 @@ namespace DataAccessLayer
             {
                 // No access to scope - Exception thrown before entering
             }
-
             return proposedReturnValue;
         }
 
@@ -368,7 +367,7 @@ namespace DataAccessLayer
             try
             {
                 EnsureConnected();
-                using (SqlCommand command = new SqlCommand("JustUpdateRole", _connection))
+                using (SqlCommand command = new SqlCommand("Role_JustUpdate", _connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@RoleID", roleID);
@@ -450,7 +449,7 @@ namespace DataAccessLayer
             try
             {
                 EnsureConnected();
-                using (SqlCommand command = new SqlCommand("GetSimuus", _connection))
+                using (SqlCommand command = new SqlCommand("Simuus_Get", _connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@Skip", skip);
@@ -479,7 +478,7 @@ namespace DataAccessLayer
             try
             {
                 EnsureConnected();
-                using (SqlCommand command = new SqlCommand("ObtainSimuuCount", _connection))
+                using (SqlCommand command = new SqlCommand("Simuus_ObtainCount", _connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     object answer = command.ExecuteScalar();
@@ -500,7 +499,7 @@ namespace DataAccessLayer
             try
             {
                 EnsureConnected();
-                using (SqlCommand command = new SqlCommand("GetSimuusRelatedToUserID", _connection))
+                using (SqlCommand command = new SqlCommand("Simuus_GetRelatedToUserID", _connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@UserID", userID);
@@ -530,7 +529,7 @@ namespace DataAccessLayer
             try
             {
                 EnsureConnected();
-                using (SqlCommand command = new SqlCommand("FindSimuuBySimuuID", _connection))
+                using (SqlCommand command = new SqlCommand("Simuu_FindBySimuuID", _connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@SimuuID", simuuID);
@@ -614,7 +613,7 @@ namespace DataAccessLayer
         #region USERS
 
         // ----- Create ----- //
-        public int User_Create(string userName, string userEmail, string passwordHash, string passwordSalt)
+        public int User_Create(string userName, string userEmail, string passwordHash, string passwordSalt, int roleID)
         {
             int proposedReturnValue = -1;
             try
@@ -627,6 +626,7 @@ namespace DataAccessLayer
                     command.Parameters.AddWithValue("@UserEmail", userEmail);
                     command.Parameters.AddWithValue("@PasswordHash", passwordHash);
                     command.Parameters.AddWithValue("@PasswordSalt", passwordSalt);
+                    command.Parameters.AddWithValue("@RoleID", roleID);
                     command.Parameters.AddWithValue("@UserID", 0);
                     command.Parameters["@UserID"].Direction = System.Data.ParameterDirection.Output;
                     command.ExecuteNonQuery();
@@ -754,6 +754,39 @@ namespace DataAccessLayer
             return ProposedReturnValue;
         }
 
+        public UserDAL User_FindByUserUserName(string userName)
+        {
+            UserDAL ProposedReturnValue = null;
+            try
+            {
+                EnsureConnected();
+                using (SqlCommand command = new SqlCommand("User_FindByUserUserName", _connection))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@UserName", userName);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        UserMapper mapper = new UserMapper(reader);
+                        int count = 0;
+                        while (reader.Read())
+                        {
+                            ProposedReturnValue = mapper.UserFromReader(reader);
+                            count++;
+                        }
+                        if (count > 1)
+                        {
+                            throw new Exception($"Found more than 1 User with username {userName}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) when (Log(ex))
+            {
+                // No access to scope - Exception thrown before entering
+            }
+            return ProposedReturnValue;
+        }
+
         public UserDAL User_FindByUserEmail(string userEmail)
         {
             UserDAL proposedReturnValue = null;
@@ -788,7 +821,7 @@ namespace DataAccessLayer
         }
 
         // ----- Update ----- //
-        public void User_JustUpdate(int userID, string userName, string userEmail, string passwordHash, string passwordSalt)
+        public void User_JustUpdate(int userID, string userName, string userEmail, string passwordHash, string passwordSalt, int roleID)
         {
             try
             {
@@ -801,6 +834,7 @@ namespace DataAccessLayer
                     command.Parameters.AddWithValue("@UserEmail", userEmail);
                     command.Parameters.AddWithValue("@PasswordHash", passwordHash);
                     command.Parameters.AddWithValue("@PasswordSalt", passwordSalt);
+                    command.Parameters.AddWithValue("@RoleID", roleID);
                     command.ExecuteNonQuery();
                 }
             }
