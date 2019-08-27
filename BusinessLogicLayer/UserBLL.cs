@@ -13,11 +13,19 @@ namespace BusinessLogicLayer
 
         #region DIRECT PROPERTIES
 
+        [System.Web.Mvc.HiddenInput(DisplayValue = false)]
         public int UserID { get; set; }
+
         public string UserName { get; set; }
+
         public string UserEmail { get; set; }
+
         public string PasswordHash { get; set; }
+
+        [System.Web.Mvc.HiddenInput(DisplayValue = false)]
         public string PasswordSalt { get; set; }
+
+        [System.Web.Mvc.HiddenInput(DisplayValue = false)]
         public int RoleID { get; set; }
 
         #endregion
@@ -27,6 +35,8 @@ namespace BusinessLogicLayer
 
         // ----- Roles Properties ----- //
         public string RoleName { get; set; }
+
+        [System.Web.Mvc.HiddenInput(DisplayValue = false)]
         public string RolePermissions { get; set; }
 
         #endregion

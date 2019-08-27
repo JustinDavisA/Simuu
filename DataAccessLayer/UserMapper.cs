@@ -17,6 +17,7 @@ namespace DataAccessLayer
         int offsetToPasswordSalt;
         int offsetToRoleID;
 
+
         // ----- Roles ----- //
         int offsetToRoleName;
         int offsetToRolePermissions;
