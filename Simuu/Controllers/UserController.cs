@@ -97,7 +97,14 @@ namespace Simuu.Controllers
             {
                 using (ContextBLL ctx = new ContextBLL())
                 {
-                    ctx.User_Create(collection);
+                    BusinessLogicLayer.UserBLL user = ctx.User_FindByUserUserName(collection.UserName);
+                    user = new UserBLL();
+                    user.UserName = collection.UserName;
+                    user.UserEmail = collection.UserEmail;
+                    user.PasswordSalt = System.Web.Helpers.Crypto.GenerateSalt(Constraints.SaltSize);
+                    user.PasswordHash = System.Web.Helpers.Crypto.HashPassword(collection.PasswordHash + user.PasswordSalt);
+                    user.RoleID = collection.RoleID;
+                    ctx.User_Create(user);
                 }
                 return RedirectToAction("Index");
             }
@@ -193,6 +200,13 @@ namespace Simuu.Controllers
                 ViewBag.Exception = ex;
                 return View("Error");
             }
+        }
+
+        public ActionResult CreateUserSimuu()
+        {
+            ViewBag.Message = "Your Simulation page.";
+
+            return View();
         }
     }
 }

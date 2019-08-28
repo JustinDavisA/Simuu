@@ -46,17 +46,17 @@ namespace BusinessLogicLayer
         #region ITEMS
 
         // ----- Create ----- //
-        public int Item_Create(string itemName, int itemEnergyModifier, int itemThirstModifier, int itemHungerModifier)
+        public int Item_Create(string itemName, int itemEnergyModifier, int itemThirstModifier, int itemHungerModifier, int userID)
         {
             int proposedReturnValue = -1;
-            proposedReturnValue = _context.Item_Create(itemName, itemEnergyModifier, itemThirstModifier, itemHungerModifier);
+            proposedReturnValue = _context.Item_Create(itemName, itemEnergyModifier, itemThirstModifier, itemHungerModifier, userID);
             return proposedReturnValue;
         }
 
         public int Item_Create(ItemBLL item)
         {
             int proposedReturnValue = -1;
-            proposedReturnValue = _context.Item_Create(item.ItemName, item.ItemEnergyModifier, item.ItemThirstModifier, item.ItemHungerModifier);
+            proposedReturnValue = _context.Item_Create(item.ItemName, item.ItemEnergyModifier, item.ItemThirstModifier, item.ItemHungerModifier, item.UserID);
             return proposedReturnValue;
         }
 
@@ -204,17 +204,17 @@ namespace BusinessLogicLayer
         #region SIMUUS
 
         // ----- Create ----- //
-        public int Simuu_Create(string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, int simuuCoordinates, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius)
+        public int Simuu_Create(string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, int simuuCoordinates, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius, int userID)
         {
             int proposedReturnValue = -1;
-            proposedReturnValue = _context.Simuu_Create(simuuName, simuuAge, simuuBirth, simuuDeath, simuuCoordinates, impulseToRest, impulseToDrink, impulseToEat, statEnergy, statThirst, statHunger, statMovementSpeed, statSenseRadius);
+            proposedReturnValue = _context.Simuu_Create(simuuName, simuuAge, simuuBirth, simuuDeath, simuuCoordinates, impulseToRest, impulseToDrink, impulseToEat, statEnergy, statThirst, statHunger, statMovementSpeed, statSenseRadius, userID);
             return proposedReturnValue;
         }
 
         public int Simuu_Create(SimuuBLL simuu)
         {
             int proposedReturnValue = -1;
-            proposedReturnValue = _context.Simuu_Create(simuu.SimuuName, simuu.SimuuAge, simuu.SimuuBirth, simuu.SimuuDeath, simuu.SimuuCoordinates, simuu.ImpulseToRest, simuu.ImpulseToDrink, simuu.ImpulseToEat, simuu.StatEnergy, simuu.StatThirst, simuu.StatHunger, simuu.SimuuMovementSpeed, simuu.SimuuSenseRadius);
+            proposedReturnValue = _context.Simuu_Create(simuu.SimuuName, simuu.SimuuAge, simuu.SimuuBirth, simuu.SimuuDeath, simuu.SimuuCoordinates, simuu.ImpulseToRest, simuu.ImpulseToDrink, simuu.ImpulseToEat, simuu.StatEnergy, simuu.StatThirst, simuu.StatHunger, simuu.SimuuMovementSpeed, simuu.SimuuSenseRadius, simuu.UserID);
             return proposedReturnValue;
         }
 

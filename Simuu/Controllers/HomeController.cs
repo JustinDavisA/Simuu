@@ -36,12 +36,6 @@ namespace Simuu.Controllers
             return View();
         }
 
-        public ActionResult TEST()
-        {
-            ViewBag.Message = "Your Simulation page.";
-
-            return View();
-        }
 
         public ActionResult Register()
         {
@@ -64,7 +58,6 @@ namespace Simuu.Controllers
                 user.UserEmail = info.UserEmail;
                 user.PasswordSalt = System.Web.Helpers.Crypto.GenerateSalt(Constraints.SaltSize);
                 user.PasswordHash = System.Web.Helpers.Crypto.HashPassword(info.Password + user.PasswordSalt);
-                user.RoleID = 3;
 
                 ctx.User_Create(user);
                 Session["AUTHUsername"] = user.UserName;
