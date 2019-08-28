@@ -156,7 +156,7 @@ Update = function () {
     for (var sim1 in simuuList) {
         console.log(sim1.xPosition);
         for (var sim2 in simuuList) {
-            DistanceBetweenSimuus(sim1, sim2);
+            console.log(DistanceBetweenSimuus(simuuList[sim1], simuuList[sim2]));
         }
     }
 }
