@@ -109,8 +109,8 @@ namespace DataAccessLayer
             proposedReturnValue.SimuuID = reader.GetInt32(offsetToSimuuID);
             proposedReturnValue.SimuuName = reader.GetString(offsetToSimuuName);
             proposedReturnValue.SimuuAge = reader.GetInt32(offsetToSimuuAge);
-            proposedReturnValue.SimuuBirth = GetDateTimeOrDefault(reader, offsetToSimuuBirth, DateTime.MinValue);
-            proposedReturnValue.SimuuDeath = GetDateTimeOrDefault(reader, offsetToSimuuDeath, DateTime.MinValue);
+            proposedReturnValue.SimuuBirth = GetDateTimeOrDefault(reader, offsetToSimuuBirth, DateTime.MinValue); // maybe dont
+            proposedReturnValue.SimuuDeath = GetDateTimeOrDefault(reader, offsetToSimuuDeath, DateTime.MinValue); // Maybe dont
             proposedReturnValue.SimuuCoordinates = reader.GetInt32(offsetToSimuuCoordinates);
             proposedReturnValue.ImpulseToRest = reader.GetInt32(offsetToImpulseToRest);
             proposedReturnValue.ImpulseToDrink = reader.GetInt32(offsetToImpulseToDrink);

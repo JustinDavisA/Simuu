@@ -55,19 +55,28 @@
         </div>
     </div>
 
-    <div class="form-group">
-        @*@Html.LabelFor(model => model.UserID, htmlAttributes: new { @class = "control-label col-md-2" })*@
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.UserID, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.UserID, new { htmlAttributes = new { @class = "form-control" } })
-            @*@Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })*@
+            @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
         </div>
-    </div>
+    </div>*@
 
-    <div class="form-group">
+    @*<div class="form-group">
         @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
+    @* UserName as drop-down menu NOT input field *@
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.UserID, (IEnumerable<SelectListItem>)ViewBag.Users, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
         </div>
     </div>
 

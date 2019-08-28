@@ -66,7 +66,7 @@ namespace DataAccessLayer
         #region ITEMS
 
         // ----- Create ----- //
-        public int Item_Create(string itemName, int itemEnergyModifier, int itemThirstModifier, int itemHungerModifier)
+        public int Item_Create(string itemName, int itemEnergyModifier, int itemThirstModifier, int itemHungerModifier, int userID)
         {
             int proposedReturnValue = -1;
             try
@@ -79,6 +79,7 @@ namespace DataAccessLayer
                     command.Parameters.AddWithValue("@ItemEnergyModifier", itemEnergyModifier);
                     command.Parameters.AddWithValue("@ItemThirstModifier", itemThirstModifier);
                     command.Parameters.AddWithValue("@ItemHungerModifier", itemHungerModifier);
+                    command.Parameters.AddWithValue("@UserID", userID);
                     command.Parameters.AddWithValue("@ItemID", 0);
                     command.Parameters["@ItemID"].Direction = System.Data.ParameterDirection.Output;
                     command.ExecuteNonQuery();
@@ -407,7 +408,7 @@ namespace DataAccessLayer
         #region SIMUUS
 
         // ----- Create ----- //
-        public int Simuu_Create(string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, int simuuCoordinates, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius)
+        public int Simuu_Create(string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, int simuuCoordinates, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius, int userID)
         {
             int proposedReturnValue = -1;
             try
@@ -429,6 +430,7 @@ namespace DataAccessLayer
                     command.Parameters.AddWithValue("@StatHunger", statHunger);
                     command.Parameters.AddWithValue("@StatMovementSpeed", statMovementSpeed);
                     command.Parameters.AddWithValue("@StatSenseRadius", statSenseRadius);
+                    command.Parameters.AddWithValue("@UserID", userID);
                     command.Parameters.AddWithValue("@SimuuID", 0);
                     command.Parameters["@SimuuID"].Direction = System.Data.ParameterDirection.Output;
                     command.ExecuteNonQuery();
