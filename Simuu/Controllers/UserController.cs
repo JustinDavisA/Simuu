@@ -95,6 +95,10 @@ namespace Simuu.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(collection);
+                }
                 using (ContextBLL ctx = new ContextBLL())
                 {
                     BusinessLogicLayer.UserBLL user = ctx.User_FindByUserUserName(collection.UserName);
@@ -145,6 +149,10 @@ namespace Simuu.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(collection);
+                }
                 // TODO: Add insert logic here
                 using (ContextBLL ctx = new ContextBLL())
                 {
@@ -186,6 +194,10 @@ namespace Simuu.Controllers
         [HttpPost]
         public ActionResult Delete(int id, UserBLL collection)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(collection);
+            }
             try
             {
                 using (ContextBLL ctx = new ContextBLL())
@@ -202,6 +214,7 @@ namespace Simuu.Controllers
             }
         }
 
+        // POST Simuu-Create + User-Create
         public ActionResult CreateUserSimuu()
         {
             ViewBag.Message = "Your Simulation page.";

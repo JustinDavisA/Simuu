@@ -95,6 +95,10 @@ namespace Simuu.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(collection);
+                }
                 using (ContextBLL ctx = new ContextBLL())
                 {
                     ctx.Simuu_Create(collection);
@@ -138,6 +142,10 @@ namespace Simuu.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(collection);
+                }
                 // TODO: Add insert logic here
                 using (ContextBLL ctx = new ContextBLL())
                 {
@@ -181,6 +189,10 @@ namespace Simuu.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(collection);
+                }
                 using (ContextBLL ctx = new ContextBLL())
                 {
                     ctx.Simuu_Delete(id);

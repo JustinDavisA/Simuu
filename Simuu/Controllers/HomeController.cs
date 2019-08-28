@@ -36,7 +36,6 @@ namespace Simuu.Controllers
             return View();
         }
 
-
         public ActionResult Register()
         {
             return View();
@@ -47,6 +46,11 @@ namespace Simuu.Controllers
         {
             using (BusinessLogicLayer.ContextBLL ctx = new BusinessLogicLayer.ContextBLL())
             {
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.Users = ctx.User_FindByUserUserName(info.UserName);
+                    return View(info);
+                }
                 BusinessLogicLayer.UserBLL user = ctx.User_FindByUserUserName(info.UserName);
                 if (user != null)
                 {
@@ -58,6 +62,7 @@ namespace Simuu.Controllers
                 user.UserEmail = info.UserEmail;
                 user.PasswordSalt = System.Web.Helpers.Crypto.GenerateSalt(Constraints.SaltSize);
                 user.PasswordHash = System.Web.Helpers.Crypto.HashPassword(info.Password + user.PasswordSalt);
+                user.RoleID = 3;
 
                 ctx.User_Create(user);
                 Session["AUTHUsername"] = user.UserName;
@@ -123,6 +128,11 @@ namespace Simuu.Controllers
         {
             using (BusinessLogicLayer.ContextBLL ctx = new BusinessLogicLayer.ContextBLL())
             {
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.Users = ctx.User_FindByUserUserName(info.UserName);
+                    return View(info);
+                }
                 BusinessLogicLayer.UserBLL user = ctx.User_FindByUserUserName(info.UserName);
                 if (user == null)
                 {
