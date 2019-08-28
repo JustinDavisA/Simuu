@@ -13,10 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingLayer", "LoggingLaye
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AILayer", "AILayer\AILayer.csproj", "{96F35A9A-3115-40FE-9F97-9D6D3888B9C2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProjectFiles", "ProjectFiles", "{3E8638B2-8A82-4734-9BC6-76ED2E1D1E1C}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\..\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\Backup\Simuu.bak = ..\..\..\..\..\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\Backup\Simuu.bak
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProjectFiles", "ProjectFiles", "{6FEE95F4-C6A1-44DB-9ACD-C36270B93C9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
