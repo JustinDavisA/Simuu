@@ -1,8 +1,9 @@
 ﻿// Reference html canvas id
 var ctx = document.getElementById("ctx").getContext("2d");
+
 ctx.font = '30px Arial';
-var HEIGHT = 720;
 var WIDTH = 1280;
+var HEIGHT = 720;
 
 // Note border collision
 var message = 'Bouncing';
@@ -42,7 +43,7 @@ GenerateSimuu = function (id, xPosition, yPosition, speed, senseRadius, icon, en
 }
 
 // Loop and create some random Simuus
-for (var i = 0; i < 15; i++) {
+for (var i = 0; i < 50; i++) {
     var xPosition = getRandomInt(1, 1279);
     var yPosition = getRandomInt(1, 719);
     var speed = getRandomInt(1, 5);
@@ -72,7 +73,19 @@ DistanceBetweenSimuus = function (entity1, entity2) {
 // return true if in sense radius
 TestSenseCollision = function (entity1, entity2) {
     var distance = DistanceBetweenSimuus(entity1, entity2);
-    return distance < 50;
+    return distance < 30;
+}
+
+// return true if in observe radius
+TestObserveCollision = function (entity1, entity2) {
+    var distance = DistanceBetweenSimuus(entity1, entity2);
+    return distance < 75;
+}
+
+// return true if in interact radius
+TestInteractCollision = function (entity1, entity2) {
+    var distance = DistanceBetweenSimuus(entity1, entity2);
+    return distance < 30;
 }
 
 // Wander movement loop
@@ -106,6 +119,16 @@ SimuuWander = function (entity) {
     }
 }
 
+// Check all simuu collision states
+CheckSimuuCollision = function (entity1, entity2) {
+    if ((TestSenseCollision(entity1, entity2) === true) && (entity1 != entity2)) {
+        entity1.icon = "X";
+        entity2.icon = "X";
+        entity1.speed = 0;
+        entity2.speed = 0;
+    }
+}
+
 // Update Simuu Position
 UpdateSimuuPosition = function (entity) {
     SimuuWander(entity);
@@ -119,16 +142,6 @@ UpdateSimuuPosition = function (entity) {
     if (entity.yPosition < 0 || entity.yPosition > HEIGHT) {
         console.log(message);
         entity.speed = -entity.speed;
-    }
-}
-
-// Check all simuu collision states
-CheckSimuuCollision = function (entity1, entity2) {
-    if ((TestSenseCollision(entity1, entity2) === false) && (entity1 != entity2)) {
-        simuu1.icon = "X";
-        simuu2.icon = "X";
-        simuu1.speed = 0;
-        simuu2.speed = 0;
     }
 }
 
@@ -147,19 +160,14 @@ UpdateSimuu = function (entity) {
 Update = function () {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
 
-    for (var simuu1 in simuuList) {
-        UpdateSimuu(simuuList[simuu1]);
-
-
-    }
-
     for (var sim1 in simuuList) {
+        UpdateSimuu(simuuList[sim1]);
         console.log(sim1.xPosition);
         for (var sim2 in simuuList) {
-            console.log(DistanceBetweenSimuus(simuuList[sim1], simuuList[sim2]));
+            CheckSimuuCollision(simuuList[sim1], simuuList[sim2]);
         }
     }
 }
 
 // Set update framerate
-setInterval(Update, 1125);
+setInterval(Update, 125);
