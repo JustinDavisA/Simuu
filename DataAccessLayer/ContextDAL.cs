@@ -129,10 +129,10 @@ namespace DataAccessLayer
             try
             {
                 EnsureConnected();
-                using (SqlCommand command = new SqlCommand("Items_GetRelatedToItemID", _connection))
+                using (SqlCommand command = new SqlCommand("Items_GetRelatedToUserID", _connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@ItemID", userID);
+                    command.Parameters.AddWithValue("@UserID", userID);
                     command.Parameters.AddWithValue("@Skip", skip);
                     command.Parameters.AddWithValue("@Take", take);
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -170,7 +170,27 @@ namespace DataAccessLayer
             {
                 // No access to scope - Exception thrown before entering
             }
+            return proposedReturnValue;
+        }
 
+        public int Items_ObtainCountRelatedToUserID(int userID)
+        {
+            int proposedReturnValue = -1;
+            try
+            {
+                EnsureConnected();
+                using (SqlCommand command = new SqlCommand("Items_ObtainCountRelatedToUserID", _connection))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@UserID", userID);
+                    object answer = command.ExecuteScalar();
+                    proposedReturnValue = (int)answer;
+                }
+            }
+            catch (Exception ex) when (Log(ex))
+            {
+                // No access to scope - Exception thrown before entering
+            }
             return proposedReturnValue;
         }
 

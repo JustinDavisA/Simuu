@@ -75,20 +75,27 @@ namespace BusinessLogicLayer
 
         public List<ItemBLL> Items_GetRelatedToUserID(int userID, int skip, int take)
         {
-            List<ItemBLL> ProposedReturnValue = new List<ItemBLL>();
+            List<ItemBLL> proposedReturnValue = new List<ItemBLL>();
             List<ItemDAL> ListOfDataLayerObjects = _context.Items_GetRelatedToUserID(userID, skip, take);
             foreach (ItemDAL Item in ListOfDataLayerObjects)
             {
                 ItemBLL BusinessObject = new ItemBLL(Item);
-                ProposedReturnValue.Add(BusinessObject);
+                proposedReturnValue.Add(BusinessObject);
             }
-            return ProposedReturnValue;
+            return proposedReturnValue;
         }
 
         public int Items_ObtainCount()
         {
             int proposedReturnValue = 0;
             proposedReturnValue = _context.Items_ObtainCount();
+            return proposedReturnValue;
+        }
+
+        public int Items_ObtainCountRelatedToUserID(int userID)
+        {
+            int proposedReturnValue = 0;
+            proposedReturnValue = _context.Items_ObtainCountRelatedToUserID(userID);
             return proposedReturnValue;
         }
 
