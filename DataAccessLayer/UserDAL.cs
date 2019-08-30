@@ -11,6 +11,7 @@ namespace DataAccessLayer
 
         #region DIRECT PROPERTIES
 
+
         public int UserID { get; set; }
         public string UserName { get; set; }
         public string UserEmail { get; set; }
@@ -18,14 +19,17 @@ namespace DataAccessLayer
         public string PasswordSalt { get; set; }
         public int RoleID { get; set; }
 
+
         #endregion
 
 
         #region INDIRECT PROPERTIES
 
+
         // ----- Roles Properties ----- //
         public string RoleName { get; set; }
         public string RolePermissions { get; set; }
+
 
         #endregion
 

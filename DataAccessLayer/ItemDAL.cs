@@ -11,17 +11,20 @@ namespace DataAccessLayer
 
         #region DIRECT PROPERTIES
 
+
         public int ItemID { get; set; }
         public string ItemName { get; set; }
         public int ItemEnergyModifier { get; set; }
         public int ItemThirstModifier { get; set; }
         public int ItemHungerModifier { get; set; }
         public int UserID { get; set; }
+        
 
         #endregion
 
 
         #region INDIRECT PROPERTIES
+
 
         // ----- Users Properties ----- //
         public string UserName { get; set; }
@@ -29,6 +32,7 @@ namespace DataAccessLayer
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
         public int RoleID { get; set; }
+
 
         #endregion
 

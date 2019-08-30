@@ -156,13 +156,31 @@ UpdateSimuu = function (entity) {
     UpdateSimuuGFX(entity);
 }
 
+// GET a JSON from C#
+getJSON = function (url) {
+    const http = new XMLHttpRequest();
+    http.open("GET", url, false);
+    http.send();
+    return http.response;
+};
+
+postJSON = function (url) {
+    const http = new XMLHttpRequest();
+    http.open("POST", url, false);
+    http.send();
+    return http.response;
+};
+
 // Update Entire Simulation
 Update = function () {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
 
+
+    console.log(getJSON('/Simulation/GetSimulationSimuus'));
+
+
     for (var sim1 in simuuList) {
         UpdateSimuu(simuuList[sim1]);
-        console.log(sim1.xPosition);
         for (var sim2 in simuuList) {
             CheckSimuuCollision(simuuList[sim1], simuuList[sim2]);
         }
@@ -170,4 +188,4 @@ Update = function () {
 }
 
 // Set update framerate
-setInterval(Update, 125);
+setInterval(Update, 2000);

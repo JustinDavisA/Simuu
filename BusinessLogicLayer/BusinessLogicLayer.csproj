@@ -67,6 +67,7 @@
     <Compile Include="ItemBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleBLL.cs" />
+    <Compile Include="SimulationLogic.cs" />
     <Compile Include="SimuuBLL.cs" />
     <Compile Include="UserBLL.cs" />
   </ItemGroup>

@@ -125,16 +125,17 @@
     <Compile Include="Controllers\OwnedItemController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\OwnedSimuuController.cs" />
+    <Compile Include="Controllers\SimulationController.cs" />
     <Compile Include="Controllers\SimuuController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Constraints.cs" />
+    <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\Filters.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegistrationModel.cs" />
-    <Compile Include="Models\UserSimuuModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +149,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ErrorLog.Log" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -207,6 +209,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Styles\" />
+    <Folder Include="Views\Simulation\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

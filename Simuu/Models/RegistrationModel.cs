@@ -10,14 +10,15 @@ namespace Simuu
 {
     public class RegistrationModel
     {
+
         [Required]
         public string UserName { get; set; }
 
         public string UserEmail { get; set; }
 
         [Required]
-        [StringLength(Constraints.MaxPasswordLength, ErrorMessage = "The {0} must be between {2} and {1} characters long.", MinimumLength = Constraints.MinPasswordLength)]
-        [RegularExpression(Constraints.PasswordRequirements, ErrorMessage = Constraints.PasswordRequirementsMessage)]
+        [StringLength(Constants.MaxPasswordLength, ErrorMessage = "The {0} must be between {2} and {1} characters long.", MinimumLength = Constants.MinPasswordLength)]
+        [RegularExpression(Constants.PasswordRequirements, ErrorMessage = Constants.PasswordRequirementsMessage)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -28,5 +29,6 @@ namespace Simuu
         public string PasswordVerify { get; set; }
         
         public string Message { get; set; }
+
     }
 }

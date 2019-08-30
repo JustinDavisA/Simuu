@@ -5,47 +5,27 @@ using System.Web;
 using System.Web.Mvc;
 
 using BusinessLogicLayer;
+using Simuu.Models;
 
 namespace Simuu.Controllers
 {
-    public class OwnedItemController : Controller
+    public class SimulationController : Controller
     {
 
-        // Return true or false for ownership
-        bool IsThisMine(ContextBLL ctx, ItemBLL mine)
-        {
-            if (User.IsInRole(Constants.AdminRoleName))
-            {
-                return true;
-            }
-            UserBLL me = ctx.User_FindByUserName(User.Identity.Name);
-            if (me == null)
-            {
-                return false;
-            }
-            return me.UserID == mine.UserID;
-        }
-
-        // Pagination for Items owned by a user
+        // Pagination for Simuus
         public ActionResult Page(int PageNumber, int PageSize)
         {
             ViewBag.PageNumber = PageNumber;
             ViewBag.PageSize = PageSize;
-            List<ItemBLL> model = new List<ItemBLL>();
+            List<SimuuBLL> model = new List<SimuuBLL>();
             try
             {
                 using (ContextBLL ctx = new ContextBLL())
                 {
-                    UserBLL currentUser = ctx.User_FindByUserName(User.Identity.Name);
-                    if (null == currentUser)
-                    {
-                        ViewBag.Exception = new Exception($"Could Not Find Record for User: {User.Identity.Name}");
-                        return View("Error");
-                    }
-                    ViewBag.TotalCount = ctx.Items_ObtainCountRelatedToUserID(currentUser.UserID);
-                    model = ctx.Items_GetRelatedToUserID(currentUser.UserID, PageNumber * PageSize, PageSize);
+                    ViewBag.TotalCount = ctx.Simuus_ObtainCount();
+                    model = ctx.Simuus_Get(PageNumber * PageSize, PageSize);
                 }
-                return View("..\\Item\\Index", model);
+                return View("Index", model);
             }
             catch (Exception ex)
             {
@@ -72,22 +52,22 @@ namespace Simuu.Controllers
             return proposedReturnValue;
         }
 
-        // GET: Item
+        // GET: Simuu
         public ActionResult Index()
         {
-            return RedirectToRoute(new { Controller = "Item", Action = "Page", PageNumber = 0, PageSize = ApplicationConfig.DefaultPageSize });
+            return RedirectToRoute(new { Controller = "Simuu", Action = "Page", PageNumber = 0, PageSize = ApplicationConfig.DefaultPageSize });
         }
 
-        // GET: Item/Details/5
+        // GET: Simuu/Details/5
         public ActionResult Details(int id)
         {
-            ItemBLL item;
+            SimuuBLL simuu;
             try
             {
                 using (ContextBLL ctx = new ContextBLL())
                 {
-                    item = ctx.Item_FindByItemID(id);
-                    if (null == item)
+                    simuu = ctx.Simuu_FindBySimuuID(id);
+                    if (null == simuu)
                     {
                         return View("Error"); // Make an item not found view?
                     }
@@ -98,21 +78,21 @@ namespace Simuu.Controllers
                 ViewBag.Exception = ex;
                 return View("Error");
             }
-            return View(item);
+            return View(simuu);
         }
 
-        // GET: Item/Create
+        // GET: Simuu/Create
         public ActionResult Create()
         {
-            ItemBLL defItem = new ItemBLL();
-            defItem.ItemID = 0;
+            SimuuBLL defSimuu = new SimuuBLL();
+            defSimuu.UserID = 0;
             ViewBag.Users = GetUserItems();
-            return View(defItem);
+            return View(defSimuu);
         }
 
-        // POST: Item/Create
+        // POST: Simuu/Create
         [HttpPost]
-        public ActionResult Create(ItemBLL collection)
+        public ActionResult Create(SimuuBLL collection)
         {
             try
             {
@@ -122,7 +102,7 @@ namespace Simuu.Controllers
                 }
                 using (ContextBLL ctx = new ContextBLL())
                 {
-                    ctx.Item_Create(collection);
+                    ctx.Simuu_Create(collection);
                 }
                 return RedirectToAction("Index");
             }
@@ -133,16 +113,16 @@ namespace Simuu.Controllers
             }
         }
 
-        // GET: Item/Edit/5
+        // GET: Simuu/Edit/5
         public ActionResult Edit(int id)
         {
-            ItemBLL user;
+            SimuuBLL simuu;
             try
             {
                 using (ContextBLL ctx = new ContextBLL())
                 {
-                    user = ctx.Item_FindByItemID(id);
-                    if (null == user)
+                    simuu = ctx.Simuu_FindBySimuuID(id);
+                    if (null == simuu)
                     {
                         return View("Error"); // Make an item not found view?
                     }
@@ -154,12 +134,12 @@ namespace Simuu.Controllers
                 return View("Error");
             }
             ViewBag.Users = GetUserItems();
-            return View(user);
+            return View(simuu);
         }
 
-        // POST: Item/Edit/5
+        // POST: Simuu/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, ItemBLL collection)
+        public ActionResult Edit(int id, SimuuBLL collection)
         {
             try
             {
@@ -170,7 +150,7 @@ namespace Simuu.Controllers
                 // TODO: Add insert logic here
                 using (ContextBLL ctx = new ContextBLL())
                 {
-                    ctx.Item_JustUpdate(collection);
+                    ctx.Simuu_JustUpdate(collection);
                 }
                 return RedirectToAction("Index");
             }
@@ -181,16 +161,16 @@ namespace Simuu.Controllers
             }
         }
 
-        // GET: Item/Delete/5
+        // GET: Simuu/Delete/5
         public ActionResult Delete(int id)
         {
-            ItemBLL item;
+            SimuuBLL simuu;
             try
             {
                 using (ContextBLL ctx = new ContextBLL())
                 {
-                    item = ctx.Item_FindByItemID(id);
-                    if (null == item)
+                    simuu = ctx.Simuu_FindBySimuuID(id);
+                    if (null == simuu)
                     {
                         return View("Error"); // Make item not found view?
                     }
@@ -201,12 +181,12 @@ namespace Simuu.Controllers
                 ViewBag.Exception = ex;
                 return View("Error");
             }
-            return View(item);
+            return View(simuu);
         }
 
-        // POST: Item/Delete/5
+        // POST: Simuu/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, ItemBLL collection)
+        public ActionResult Delete(int id, SimuuBLL collection)
         {
             try
             {
@@ -216,7 +196,7 @@ namespace Simuu.Controllers
                 }
                 using (ContextBLL ctx = new ContextBLL())
                 {
-                    ctx.Item_Delete(id);
+                    ctx.Simuu_Delete(id);
                 }
 
                 return RedirectToAction("Index");
@@ -224,6 +204,49 @@ namespace Simuu.Controllers
             catch (Exception ex)
             {
                 ViewBag.Exception = ex;
+                return View("Error");
+            }
+        }
+
+
+        public ActionResult GetSimulationSimuus()
+        {
+            try
+            {
+                using (ContextBLL ctx = new ContextBLL()) {
+                    List<SimuuBLL> proposedReturnValue = new List<SimuuBLL>();
+                    List<SimuuBLL> simuus = ctx.Simuus_Get(0, 25);
+                    foreach (SimuuBLL simuu in simuus)
+                    {
+                        proposedReturnValue.Add(new SimuuBLL {
+                            SimuuID = simuu.SimuuID,
+                            SimuuName = simuu.SimuuName,
+                            SimuuAge = simuu.SimuuAge,
+                            SimuuBirth = simuu.SimuuBirth,
+                            SimuuDeath = simuu.SimuuDeath,
+                            SimuuCoordinates = simuu.SimuuCoordinates,
+                            ImpulseToRest = simuu.ImpulseToRest,
+                            ImpulseToDrink = simuu.ImpulseToDrink,
+                            ImpulseToEat = simuu.ImpulseToEat,
+                            StatEnergy = simuu.StatEnergy,
+                            StatThirst = simuu.StatThirst,
+                            StatHunger = simuu.StatHunger,
+                            SimuuMovementSpeed = simuu.SimuuMovementSpeed,
+                            SimuuSenseRadius = simuu.SimuuSenseRadius,
+                            UserID = simuu.UserID,
+                            UserName = simuu.UserName,
+                            UserEmail = simuu.UserEmail,
+                            PasswordHash = simuu.PasswordHash,
+                            PasswordSalt = simuu.PasswordSalt,
+                        });
+                    }
+                    return Json(proposedReturnValue, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Exception = ex;
+                LoggingLayer.Logger.Log(ex);
                 return View("Error");
             }
         }

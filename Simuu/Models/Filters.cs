@@ -6,7 +6,6 @@ using System.Web.Mvc;
 
 namespace Simuu.Models
 {
-
     public class MustBeLoggedInAttribute : AuthorizeAttribute
     {
 
@@ -20,7 +19,7 @@ namespace Simuu.Models
             else
             {
                 string ReturnURL = filterContext.RequestContext.HttpContext.Request.Path.ToString();
-                filterContext.Controller.TempData.Add("Message", $"you must be logged into any account to access this resource, you are not currently logged in at all");
+                filterContext.Controller.TempData.Add("Message", $"You must be logged into an account to access this resource.");
                 filterContext.Controller.TempData.Add("ReturnURL", ReturnURL);
                 System.Web.Routing.RouteValueDictionary dict = new System.Web.Routing.RouteValueDictionary();
                 dict.Add("Controller", "Home");
@@ -44,7 +43,7 @@ namespace Simuu.Models
             else
             {
                 string ReturnURL = filterContext.RequestContext.HttpContext.Request.Path.ToString();
-                filterContext.Controller.TempData.Add("Message", $"you must be in at least one of the following roles to access this resource:  {Roles}");
+                filterContext.Controller.TempData.Add("Message", $"You must be in one of the following roles to access this resource: {Roles}");
                 filterContext.Controller.TempData.Add("ReturnURL", ReturnURL);
                 System.Web.Routing.RouteValueDictionary dict = new System.Web.Routing.RouteValueDictionary();
                 dict.Add("Controller", "Home");
@@ -54,5 +53,4 @@ namespace Simuu.Models
         }
 
     }
-
 }

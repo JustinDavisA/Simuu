@@ -9,7 +9,7 @@ using Simuu.Models;
 
 namespace Simuu.Controllers
 {
-    [MustBeInRole(Roles = "Administrator")]
+    [MustBeInRole(Roles = Constants.AdminRoleName)]
     public class RoleController : Controller
     {
 
@@ -208,5 +208,6 @@ namespace Simuu.Controllers
                 return View("Error");
             }
         }
+
     }
 }

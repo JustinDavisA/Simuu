@@ -11,6 +11,7 @@ namespace DataAccessLayer
 
         #region DIRECT PROPERTIES
 
+
         public int SimuuID { get; set; }
         public string SimuuName { get; set; }
         public int SimuuAge { get; set; }
@@ -27,10 +28,12 @@ namespace DataAccessLayer
         public int SimuuSenseRadius { get; set; }
         public int UserID { get; set; }
 
+
         #endregion
 
 
         #region INDIRECT PROPERTIES
+
 
         // ----- Users Properties ----- //
         public string UserName { get; set; }
@@ -38,6 +41,7 @@ namespace DataAccessLayer
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
         public int RoleID { get; set; }
+
 
         #endregion
 

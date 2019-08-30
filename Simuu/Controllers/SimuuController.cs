@@ -5,13 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 
 using BusinessLogicLayer;
+using Simuu.Models;
 
 namespace Simuu.Controllers
 {
+    [MustBeInRole(Roles = Constants.PowerRoleName)]
     public class SimuuController : Controller
     {
 
-        // Pagination for Users
+        // Pagination for Simuus
         public ActionResult Page(int PageNumber, int PageSize)
         {
             ViewBag.PageNumber = PageNumber;
@@ -33,7 +35,7 @@ namespace Simuu.Controllers
             }
         }
 
-        // Create a List of Roles for drop-down selection
+        // Create a List of Users for drop-down selection
         List<SelectListItem> GetUserItems()
         {
             List<SelectListItem> proposedReturnValue = new List<SelectListItem>();

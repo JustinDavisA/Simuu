@@ -24,7 +24,7 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Simuu-lation", "Simulation", "Home")</li>
-                    @if (User.IsInRole(Constraints.AdminRoleName))
+                    @if (User.IsInRole(Constants.AdminRoleName))
                     {
                         <li>@Html.ActionLink("Roles", "Index", "Role")</li>
                         <li>@Html.ActionLink("Users", "Index", "User")</li>

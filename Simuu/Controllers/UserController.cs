@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 
 using BusinessLogicLayer;
+using Simuu.Models;
 
 namespace Simuu.Controllers
 {
+    [MustBeInRole(Roles = Constants.AdminRoleName)]
     public class UserController : Controller
     {
 
@@ -101,11 +103,11 @@ namespace Simuu.Controllers
                 }
                 using (ContextBLL ctx = new ContextBLL())
                 {
-                    BusinessLogicLayer.UserBLL user = ctx.User_FindByUserUserName(collection.UserName);
+                    BusinessLogicLayer.UserBLL user = ctx.User_FindByUserName(collection.UserName);
                     user = new UserBLL();
                     user.UserName = collection.UserName;
                     user.UserEmail = collection.UserEmail;
-                    user.PasswordSalt = System.Web.Helpers.Crypto.GenerateSalt(Constraints.SaltSize);
+                    user.PasswordSalt = System.Web.Helpers.Crypto.GenerateSalt(Constants.SaltSize);
                     user.PasswordHash = System.Web.Helpers.Crypto.HashPassword(collection.PasswordHash + user.PasswordSalt);
                     user.RoleID = collection.RoleID;
                     ctx.User_Create(user);

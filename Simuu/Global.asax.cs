@@ -11,6 +11,7 @@ namespace Simuu
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+
         protected void Application_Start()
         {
             ApplicationConfig.RegisterAplicationVariables();
@@ -21,6 +22,7 @@ namespace Simuu
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
+
         protected void Application_Error(object sender, EventArgs e)
         {
             var ex = Server.GetLastError();
@@ -29,20 +31,22 @@ namespace Simuu
             LoggingLayer.Logger.Log(ex);
         }
 
+
         protected void Application_AcquireRequestState()
         {
             string sessionUser = Session["AUTHUser"] as string;
             string sessionRole = Session["AUTHRole"] as string;
-            string ValidationType = Session["AUTHTYPE"] as string;
+            string validationType = Session["AUTHTYPE"] as string;
             if (string.IsNullOrEmpty(sessionUser))
             {
                 return;
             }
-            GenericIdentity identity = new GenericIdentity(sessionUser, ValidationType);
+            GenericIdentity identity = new GenericIdentity(sessionUser, validationType);
             if (sessionRole == null) { sessionRole = ""; }
             string[] roles = sessionRole.Split(' ');
             GenericPrincipal p = new GenericPrincipal(identity, roles);
             HttpContext.Current.User = p;
         }
+
     }
 }

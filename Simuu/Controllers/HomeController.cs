@@ -10,11 +10,14 @@ namespace Simuu.Controllers
 {
     public class HomeController : Controller
     {
+
+        // GET: Home
         public ActionResult Index()
         {
             return View();
         }
 
+        // GET: Home/About
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -22,6 +25,7 @@ namespace Simuu.Controllers
             return View();
         }
 
+        // GET: Home/Contact
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -29,6 +33,7 @@ namespace Simuu.Controllers
             return View();
         }
 
+        // GET: Home/Simulation
         public ActionResult Simulation()
         {
             ViewBag.Message = "Your Simulation page.";
@@ -36,11 +41,13 @@ namespace Simuu.Controllers
             return View();
         }
 
+        // GET: Home/Register
         public ActionResult Register()
         {
             return View();
         }
 
+        // POST: Home/Register
         [HttpPost]
         public ActionResult Register(RegistrationModel info)
         {
@@ -48,10 +55,10 @@ namespace Simuu.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    ViewBag.Users = ctx.User_FindByUserUserName(info.UserName);
+                    ViewBag.Users = ctx.User_FindByUserName(info.UserName);
                     return View(info);
                 }
-                BusinessLogicLayer.UserBLL user = ctx.User_FindByUserUserName(info.UserName);
+                BusinessLogicLayer.UserBLL user = ctx.User_FindByUserName(info.UserName);
                 if (user != null)
                 {
                     info.Message = $"The Username '{info.UserName}' already exists in the database";
@@ -60,7 +67,7 @@ namespace Simuu.Controllers
                 user = new UserBLL();
                 user.UserName = info.UserName;
                 user.UserEmail = info.UserEmail;
-                user.PasswordSalt = System.Web.Helpers.Crypto.GenerateSalt(Constraints.SaltSize);
+                user.PasswordSalt = System.Web.Helpers.Crypto.GenerateSalt(Constants.SaltSize);
                 user.PasswordHash = System.Web.Helpers.Crypto.HashPassword(info.Password + user.PasswordSalt);
                 user.RoleID = 3;
 
@@ -72,6 +79,7 @@ namespace Simuu.Controllers
             }
         }
 
+        // GET: Home/Hash
         public ActionResult Hash()
         {
             if (!User.Identity.IsAuthenticated)
@@ -91,14 +99,14 @@ namespace Simuu.Controllers
 
             using (BusinessLogicLayer.ContextBLL ctx = new BusinessLogicLayer.ContextBLL())
             {
-                BusinessLogicLayer.UserBLL user = ctx.User_FindByUserUserName(User.Identity.Name);
+                BusinessLogicLayer.UserBLL user = ctx.User_FindByUserName(User.Identity.Name);
                 if (user == null)
                 {
                     Exception Message = new Exception($"The Username '{User.Identity.Name}' does not exist in the database");
                     ViewBag.Exception = Message;
                     return View("Error");
                 }
-                user.PasswordSalt = System.Web.Helpers.Crypto.GenerateSalt(Constraints.SaltSize);
+                user.PasswordSalt = System.Web.Helpers.Crypto.GenerateSalt(Constants.SaltSize);
                 user.PasswordHash = System.Web.Helpers.Crypto.HashPassword(user.PasswordHash + user.PasswordSalt);
                 ctx.User_JustUpdate(user);
 
@@ -112,6 +120,7 @@ namespace Simuu.Controllers
             }
         }
 
+        // GET: Home/Login
         [HttpGet]
         public ActionResult Login()
         {
@@ -123,6 +132,7 @@ namespace Simuu.Controllers
             return View(model);
         }
 
+        // POST: Home/Login
         [HttpPost]
         public ActionResult Login(LoginModel info)
         {
@@ -130,10 +140,10 @@ namespace Simuu.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    ViewBag.Users = ctx.User_FindByUserUserName(info.UserName);
+                    ViewBag.Users = ctx.User_FindByUserName(info.UserName);
                     return View(info);
                 }
-                BusinessLogicLayer.UserBLL user = ctx.User_FindByUserUserName(info.UserName);
+                BusinessLogicLayer.UserBLL user = ctx.User_FindByUserName(info.UserName);
                 if (user == null)
                 {
                     info.Message = $"The Username '{info.UserName}' does not exist in the database";
@@ -162,6 +172,7 @@ namespace Simuu.Controllers
             }
         }
 
+        // GET: Home/Logout
         public ActionResult Logout()
         {
             Session.Remove("AUTHUser");
@@ -169,5 +180,6 @@ namespace Simuu.Controllers
             Session.Remove("AUTHTYPE");
             return RedirectToAction("Index");
         }
+
     }
 }

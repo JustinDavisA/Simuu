@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Simuu
 {
-    public class Constraints
+    public class Constants
     {
 
         public const int AdminRole = 1;

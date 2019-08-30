@@ -62,6 +62,7 @@ namespace DataAccessLayer
             Assert(10 == offsetToRoleID, $"RoleID is {offsetToRoleID}, not 10 as expected");
         }
 
+
         public ItemDAL ItemFromReader(System.Data.SqlClient.SqlDataReader reader)
         {
             ItemDAL proposedReturnValue = new ItemDAL();

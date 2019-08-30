@@ -5,13 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 
 using BusinessLogicLayer;
+using Simuu.Models;
 
 namespace Simuu.Controllers
 {
+    [MustBeInRole(Roles = Constants.PowerRoleName)]
     public class ItemController : Controller
     {
 
-        // Pagination for Users
+        // Pagination for Items
         public ActionResult Page(int PageNumber, int PageSize)
         {
             ViewBag.PageNumber = PageNumber;
