@@ -17,7 +17,7 @@ namespace DataAccessLayer
         public int SimuuAge { get; set; }
         public DateTime SimuuBirth { get; set; }
         public DateTime SimuuDeath { get; set; }
-        public int SimuuCoordinates { get; set; }
+        public string SimuuCoordinates { get; set; }
         public int ImpulseToRest { get; set; }
         public int ImpulseToDrink { get; set; }
         public int ImpulseToEat { get; set; }

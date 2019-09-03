@@ -482,7 +482,7 @@ namespace DataAccessLayer
 
 
         // ----- Create ----- //
-        public int Simuu_Create(string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, int simuuCoordinates, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius, int userID)
+        public int Simuu_Create(string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, string simuuCoordinates, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius, int userID)
         {
             int proposedReturnValue = -1;
             try
@@ -654,7 +654,7 @@ namespace DataAccessLayer
         }
 
         // ----- Update ----- //
-        public void Simuu_JustUpdate(int simuuID, string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, int simuuCoordinates, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius)
+        public void Simuu_JustUpdate(int simuuID, string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, string simuuCoordinates, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius)
         {
             try
             {

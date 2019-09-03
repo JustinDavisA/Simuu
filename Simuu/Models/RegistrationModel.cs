@@ -23,9 +23,12 @@ namespace Simuu
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Verify Password")]
+        [Compare("Password", ErrorMessage = "Passwords do not Match")]
+        [Required]
+        [StringLength(Constants.MaxPasswordLength, ErrorMessage = "The {0} must be between {2} and {1} characters long.", MinimumLength = Constants.MinPasswordLength)]
+        [RegularExpression(Constants.PasswordRequirements, ErrorMessage = Constants.PasswordRequirementsMessage)]
+        [Display(Name = "Password Again")]
         public string PasswordVerify { get; set; }
         
         public string Message { get; set; }

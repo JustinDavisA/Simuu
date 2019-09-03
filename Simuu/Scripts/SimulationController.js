@@ -76,18 +76,6 @@ TestSenseCollision = function (entity1, entity2) {
     return distance < 30;
 }
 
-// return true if in observe radius
-TestObserveCollision = function (entity1, entity2) {
-    var distance = DistanceBetweenSimuus(entity1, entity2);
-    return distance < 75;
-}
-
-// return true if in interact radius
-TestInteractCollision = function (entity1, entity2) {
-    var distance = DistanceBetweenSimuus(entity1, entity2);
-    return distance < 30;
-}
-
 // Wander movement loop
 SimuuWander = function (entity) {
     // Get random facing direction Up, Right, Down, Left
@@ -164,13 +152,6 @@ getJSON = function (url) {
     return http.response;
 };
 
-postJSON = function (url) {
-    const http = new XMLHttpRequest();
-    http.open("POST", url, false);
-    http.send();
-    return http.response;
-};
-
 // Update Entire Simulation
 Update = function () {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
@@ -188,4 +169,4 @@ Update = function () {
 }
 
 // Set update framerate
-setInterval(Update, 2000);
+setInterval(Update, 25);

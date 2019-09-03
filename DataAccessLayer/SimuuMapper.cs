@@ -111,7 +111,7 @@ namespace DataAccessLayer
             proposedReturnValue.SimuuAge = reader.GetInt32(offsetToSimuuAge);
             proposedReturnValue.SimuuBirth = GetDateTimeOrDefault(reader, offsetToSimuuBirth, DateTime.MinValue); // maybe dont
             proposedReturnValue.SimuuDeath = GetDateTimeOrDefault(reader, offsetToSimuuDeath, DateTime.MinValue); // Maybe dont
-            proposedReturnValue.SimuuCoordinates = reader.GetInt32(offsetToSimuuCoordinates);
+            proposedReturnValue.SimuuCoordinates = reader.GetString(offsetToSimuuCoordinates);
             proposedReturnValue.ImpulseToRest = reader.GetInt32(offsetToImpulseToRest);
             proposedReturnValue.ImpulseToDrink = reader.GetInt32(offsetToImpulseToDrink);
             proposedReturnValue.ImpulseToEat = reader.GetInt32(offsetToImpulseToEat);

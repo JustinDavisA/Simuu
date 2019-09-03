@@ -25,7 +25,7 @@ namespace BusinessLogicLayer
 
         public DateTime SimuuDeath { get; set; }
 
-        public int SimuuCoordinates { get; set; }
+        public string SimuuCoordinates { get; set; }
 
         public int ImpulseToRest { get; set; }
 

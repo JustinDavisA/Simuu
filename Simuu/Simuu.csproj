@@ -129,6 +129,7 @@
     <Compile Include="Controllers\SimulationController.cs" />
     <Compile Include="Controllers\SimuuController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserSimuuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -136,6 +137,7 @@
     <Compile Include="Models\Filters.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegistrationModel.cs" />
+    <Compile Include="Models\UserSimuuModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -204,7 +206,7 @@
     <Content Include="Views\Shared\ItemNotFound.cshtml" />
     <Content Include="Views\Shared\NotYourItem.cshtml" />
     <Content Include="Views\Home\Simulation.cshtml" />
-    <Content Include="Views\User\CreateUserSimuu.cshtml" />
+    <Content Include="Views\UserSimuu\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

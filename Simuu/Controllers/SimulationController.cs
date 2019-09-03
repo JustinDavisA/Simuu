@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 
 using BusinessLogicLayer;
-using Simuu.Models;
+using Simuu;
 
 namespace Simuu.Controllers
 {
@@ -213,12 +213,14 @@ namespace Simuu.Controllers
         {
             try
             {
-                using (ContextBLL ctx = new ContextBLL()) {
+                using (ContextBLL ctx = new ContextBLL())
+                {
                     List<SimuuBLL> proposedReturnValue = new List<SimuuBLL>();
                     List<SimuuBLL> simuus = ctx.Simuus_Get(0, 25);
                     foreach (SimuuBLL simuu in simuus)
                     {
-                        proposedReturnValue.Add(new SimuuBLL {
+                        proposedReturnValue.Add(new SimuuBLL
+                        {
                             SimuuID = simuu.SimuuID,
                             SimuuName = simuu.SimuuName,
                             SimuuAge = simuu.SimuuAge,

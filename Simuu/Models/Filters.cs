@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Simuu.Models
+namespace Simuu
 {
     public class MustBeLoggedInAttribute : AuthorizeAttribute
     {

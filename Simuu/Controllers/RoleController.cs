@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 
 using BusinessLogicLayer;
-using Simuu.Models;
+using Simuu;
 
 namespace Simuu.Controllers
 {
