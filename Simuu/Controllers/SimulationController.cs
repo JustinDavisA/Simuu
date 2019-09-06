@@ -215,34 +215,7 @@ namespace Simuu.Controllers
             {
                 using (ContextBLL ctx = new ContextBLL())
                 {
-                    List<SimuuBLL> proposedReturnValue = new List<SimuuBLL>();
-                    List<SimuuBLL> simuus = ctx.Simuus_Get(0, 25);
-                    foreach (SimuuBLL simuu in simuus)
-                    {
-                        proposedReturnValue.Add(new SimuuBLL
-                        {
-                            SimuuID = simuu.SimuuID,
-                            SimuuName = simuu.SimuuName,
-                            SimuuAge = simuu.SimuuAge,
-                            SimuuBirth = simuu.SimuuBirth,
-                            SimuuDeath = simuu.SimuuDeath,
-                            SimuuCoordinates = simuu.SimuuCoordinates,
-                            ImpulseToRest = simuu.ImpulseToRest,
-                            ImpulseToDrink = simuu.ImpulseToDrink,
-                            ImpulseToEat = simuu.ImpulseToEat,
-                            StatEnergy = simuu.StatEnergy,
-                            StatThirst = simuu.StatThirst,
-                            StatHunger = simuu.StatHunger,
-                            SimuuMovementSpeed = simuu.SimuuMovementSpeed,
-                            SimuuSenseRadius = simuu.SimuuSenseRadius,
-                            UserID = simuu.UserID,
-                            UserName = simuu.UserName,
-                            UserEmail = simuu.UserEmail,
-                            PasswordHash = simuu.PasswordHash,
-                            PasswordSalt = simuu.PasswordSalt,
-                        });
-                    }
-                    return Json(proposedReturnValue, JsonRequestBehavior.AllowGet);
+                    return Json(ctx.ProcessSimuus(), JsonRequestBehavior.AllowGet);
                 }
             }
             catch (Exception ex)
@@ -252,6 +225,9 @@ namespace Simuu.Controllers
                 return View("Error");
             }
         }
+
+
+
 
     }
 }

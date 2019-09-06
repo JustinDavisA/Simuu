@@ -482,7 +482,7 @@ namespace DataAccessLayer
 
 
         // ----- Create ----- //
-        public int Simuu_Create(string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, string simuuCoordinates, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius, int userID)
+        public int Simuu_Create(string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, int simuuXCoordinate, int simuuYCoordinate, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius, int userID)
         {
             int proposedReturnValue = -1;
             try
@@ -495,7 +495,8 @@ namespace DataAccessLayer
                     command.Parameters.AddWithValue("@SimuuAge", simuuAge);
                     command.Parameters.AddWithValue("@SimuuBirth", simuuBirth);
                     command.Parameters.AddWithValue("@SimuuDeath", simuuDeath);
-                    command.Parameters.AddWithValue("@SimuuCoordinates", simuuCoordinates);
+                    command.Parameters.AddWithValue("@SimuuXCoordinate", simuuXCoordinate);
+                    command.Parameters.AddWithValue("@SimuuYCoordinate", simuuYCoordinate);
                     command.Parameters.AddWithValue("@ImpulseToRest", impulseToRest);
                     command.Parameters.AddWithValue("@ImpulseToDrink", impulseToDrink);
                     command.Parameters.AddWithValue("@ImpulseToEat", impulseToEat);
@@ -654,7 +655,7 @@ namespace DataAccessLayer
         }
 
         // ----- Update ----- //
-        public void Simuu_JustUpdate(int simuuID, string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, string simuuCoordinates, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius)
+        public void Simuu_JustUpdate(int simuuID, string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, int simuuXCoordinate, int simuuYCoordinate, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius)
         {
             try
             {
@@ -667,7 +668,8 @@ namespace DataAccessLayer
                     command.Parameters.AddWithValue("@SimuuAge", simuuAge);
                     command.Parameters.AddWithValue("@SimuuBirth", simuuBirth);
                     command.Parameters.AddWithValue("@SimuuDeath", simuuDeath);
-                    command.Parameters.AddWithValue("@SimuuCoordinates", simuuCoordinates);
+                    command.Parameters.AddWithValue("@SimuuXCoordinate", simuuXCoordinate);
+                    command.Parameters.AddWithValue("@SimuuYCoordinate", simuuYCoordinate);
                     command.Parameters.AddWithValue("@ImpulseToRest", impulseToRest);
                     command.Parameters.AddWithValue("@ImpulseToDrink", impulseToDrink);
                     command.Parameters.AddWithValue("@ImpulseToEat", impulseToEat);

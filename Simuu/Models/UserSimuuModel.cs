@@ -20,7 +20,9 @@ namespace Simuu
 
         public DateTime SimuuDeath { get; set; }
 
-        public string SimuuCoordinates { get; set; }
+        public int SimuuXCoordinate { get; set; }
+
+        public int SimuuYCoordinate { get; set; }
 
         public int ImpulseToRest { get; set; }
 

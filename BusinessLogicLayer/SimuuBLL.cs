@@ -25,7 +25,9 @@ namespace BusinessLogicLayer
 
         public DateTime SimuuDeath { get; set; }
 
-        public string SimuuCoordinates { get; set; }
+        public int SimuuXCoordinate { get; set; }
+
+        public int SimuuYCoordinate { get; set; }
 
         public int ImpulseToRest { get; set; }
 
@@ -85,7 +87,8 @@ namespace BusinessLogicLayer
             this.SimuuAge = dal.SimuuAge;
             this.SimuuBirth = dal.SimuuBirth;
             this.SimuuDeath = dal.SimuuDeath;
-            this.SimuuCoordinates = dal.SimuuCoordinates;
+            this.SimuuXCoordinate = dal.SimuuXCoordinate;
+            this.SimuuYCoordinate = dal.SimuuYCoordinate;
             this.ImpulseToRest = dal.ImpulseToRest;
             this.ImpulseToDrink = dal.ImpulseToDrink;
             this.ImpulseToEat = dal.ImpulseToEat;

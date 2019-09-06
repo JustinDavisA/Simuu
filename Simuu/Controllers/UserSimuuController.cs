@@ -54,7 +54,7 @@ namespace Simuu.Controllers
                     }
                     int UserID = ctx.User_Create(collection.UserName, collection.UserEmail, collection.Password, collection.Password, collection.RoleID);
 
-                    ctx.Simuu_Create(collection.SimuuName, collection.SimuuAge, collection.SimuuBirth, collection.SimuuDeath, collection.SimuuCoordinates, collection.ImpulseToRest, collection.ImpulseToDrink, collection.ImpulseToEat, collection.StatEnergy, collection.StatThirst, collection.StatHunger, collection.SimuuMovementSpeed, collection.SimuuSenseRadius, UserID);
+                    ctx.Simuu_Create(collection.SimuuName, collection.SimuuAge, collection.SimuuBirth, collection.SimuuDeath, collection.SimuuXCoordinate, collection.SimuuYCoordinate, collection.ImpulseToRest, collection.ImpulseToDrink, collection.ImpulseToEat, collection.StatEnergy, collection.StatThirst, collection.StatHunger, collection.SimuuMovementSpeed, collection.SimuuSenseRadius, UserID);
                 }
                 return RedirectToAction("Index", "User");
             }

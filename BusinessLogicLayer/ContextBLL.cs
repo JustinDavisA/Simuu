@@ -234,17 +234,17 @@ namespace BusinessLogicLayer
 
 
         // ----- Create ----- //
-        public int Simuu_Create(string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, string simuuCoordinates, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius, int userID)
+        public int Simuu_Create(string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, int simuuXCoordinate, int simuuYCoordinate, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius, int userID)
         {
             int proposedReturnValue = -1;
-            proposedReturnValue = _context.Simuu_Create(simuuName, simuuAge, simuuBirth, simuuDeath, simuuCoordinates, impulseToRest, impulseToDrink, impulseToEat, statEnergy, statThirst, statHunger, statMovementSpeed, statSenseRadius, userID);
+            proposedReturnValue = _context.Simuu_Create(simuuName, simuuAge, simuuBirth, simuuDeath, simuuXCoordinate, simuuYCoordinate, impulseToRest, impulseToDrink, impulseToEat, statEnergy, statThirst, statHunger, statMovementSpeed, statSenseRadius, userID);
             return proposedReturnValue;
         }
 
         public int Simuu_Create(SimuuBLL simuu)
         {
             int proposedReturnValue = -1;
-            proposedReturnValue = _context.Simuu_Create(simuu.SimuuName, simuu.SimuuAge, simuu.SimuuBirth, simuu.SimuuDeath, simuu.SimuuCoordinates, simuu.ImpulseToRest, simuu.ImpulseToDrink, simuu.ImpulseToEat, simuu.StatEnergy, simuu.StatThirst, simuu.StatHunger, simuu.SimuuMovementSpeed, simuu.SimuuSenseRadius, simuu.UserID);
+            proposedReturnValue = _context.Simuu_Create(simuu.SimuuName, simuu.SimuuAge, simuu.SimuuBirth, simuu.SimuuDeath, simuu.SimuuXCoordinate, simuu.SimuuYCoordinate, simuu.ImpulseToRest, simuu.ImpulseToDrink, simuu.ImpulseToEat, simuu.StatEnergy, simuu.StatThirst, simuu.StatHunger, simuu.SimuuMovementSpeed, simuu.SimuuSenseRadius, simuu.UserID);
             return proposedReturnValue;
         }
 
@@ -299,14 +299,14 @@ namespace BusinessLogicLayer
         }
 
         // ----- Update ----- //
-        public void Simuu_JustUpdate(int simuuID, string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, string simuuCoordinates, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius)
+        public void Simuu_JustUpdate(int simuuID, string simuuName, int simuuAge, DateTime simuuBirth, DateTime simuuDeath, int simuuXCoordinate, int simuuYCoordinate, int impulseToRest, int impulseToDrink, int impulseToEat, int statEnergy, int statThirst, int statHunger, int statMovementSpeed, int statSenseRadius)
         {
-            _context.Simuu_JustUpdate(simuuID, simuuName, simuuAge, simuuBirth, simuuDeath, simuuCoordinates, impulseToRest, impulseToDrink, impulseToEat, statEnergy, statThirst, statHunger, statMovementSpeed, statSenseRadius);
+            _context.Simuu_JustUpdate(simuuID, simuuName, simuuAge, simuuBirth, simuuDeath, simuuXCoordinate, simuuYCoordinate, impulseToRest, impulseToDrink, impulseToEat, statEnergy, statThirst, statHunger, statMovementSpeed, statSenseRadius);
         }
 
         public void Simuu_JustUpdate(SimuuBLL simuu)
         {
-            _context.Simuu_JustUpdate(simuu.SimuuID, simuu.SimuuName, simuu.SimuuAge, simuu.SimuuBirth, simuu.SimuuDeath, simuu.SimuuCoordinates, simuu.ImpulseToRest, simuu.ImpulseToDrink, simuu.ImpulseToEat, simuu.StatEnergy, simuu.StatThirst, simuu.StatHunger, simuu.SimuuMovementSpeed, simuu.SimuuSenseRadius);
+            _context.Simuu_JustUpdate(simuu.SimuuID, simuu.SimuuName, simuu.SimuuAge, simuu.SimuuBirth, simuu.SimuuDeath, simuu.SimuuXCoordinate, simuu.SimuuYCoordinate, simuu.ImpulseToRest, simuu.ImpulseToDrink, simuu.ImpulseToEat, simuu.StatEnergy, simuu.StatThirst, simuu.StatHunger, simuu.SimuuMovementSpeed, simuu.SimuuSenseRadius);
         }
 
         // ----- Delete ----- //
@@ -406,14 +406,32 @@ namespace BusinessLogicLayer
         // ----- Delete ----- //
         public void Item_Delete(int itemID)
         {
-            _context.Role_Delete(itemID);
+            _context.Item_Delete(itemID);
         }
 
         public void Item_Delete(ItemBLL item)
         {
-            _context.Role_Delete(item.ItemID);
+            _context.Item_Delete(item.ItemID);
         }
 
+
+        #endregion
+
+
+        #region Simuu Processing
+
+        public List<SimuuBLL> ProcessSimuus()
+        {
+            SimulationLogic simLog = new SimulationLogic();
+            int simCount = Simuus_ObtainCount();
+            simLog.mySimuus = Simuus_Get(0, simCount);
+            simLog.Process();
+            foreach (var simuu in simLog.mySimuus)
+            {
+                Simuu_JustUpdate(simuu);
+            }
+            return simLog.mySimuus;
+        }
 
         #endregion
 

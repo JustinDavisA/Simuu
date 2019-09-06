@@ -15,7 +15,8 @@ namespace DataAccessLayer
         int offsetToSimuuAge;
         int offsetToSimuuBirth;
         int offsetToSimuuDeath;
-        int offsetToSimuuCoordinates;
+        int offsetToSimuuXCoordinate;
+        int offsetToSimuuYCoordinate;
         int offsetToImpulseToRest;
         int offsetToImpulseToDrink;
         int offsetToImpulseToEat;
@@ -53,51 +54,54 @@ namespace DataAccessLayer
             offsetToSimuuDeath = reader.GetOrdinal("SimuuDeath");
             Assert(4 == offsetToSimuuDeath, $"SimuuDeath is {offsetToSimuuDeath}, not 4 as expected");
 
-            offsetToSimuuCoordinates = reader.GetOrdinal("SimuuCoordinates");
-            Assert(5 == offsetToSimuuCoordinates, $"SimuuCoordinates is {offsetToSimuuCoordinates}, not 5 as expected");
+            offsetToSimuuXCoordinate = reader.GetOrdinal("SimuuXCoordinate");
+            Assert(5 == offsetToSimuuXCoordinate, $"SimuuCoordinates is {offsetToSimuuXCoordinate}, not 5 as expected");
+
+            offsetToSimuuYCoordinate = reader.GetOrdinal("SimuuYCoordinate");
+            Assert(6 == offsetToSimuuYCoordinate, $"SimuuCoordinates is {offsetToSimuuYCoordinate}, not 6 as expected");
 
             offsetToImpulseToRest = reader.GetOrdinal("ImpulseToRest");
-            Assert(6 == offsetToImpulseToRest, $"ImpulseToRest is {offsetToImpulseToRest}, not 6 as expected");
+            Assert(7 == offsetToImpulseToRest, $"ImpulseToRest is {offsetToImpulseToRest}, not 7 as expected");
 
             offsetToImpulseToDrink = reader.GetOrdinal("ImpulseToDrink");
-            Assert(7 == offsetToImpulseToDrink, $"ImpulseToDrink is {offsetToImpulseToDrink}, not 7 as expected");
+            Assert(8 == offsetToImpulseToDrink, $"ImpulseToDrink is {offsetToImpulseToDrink}, not 8 as expected");
 
             offsetToImpulseToEat = reader.GetOrdinal("ImpulseToEat");
-            Assert(8 == offsetToImpulseToEat, $"ImpulseToEat is {offsetToImpulseToEat}, not 8 as expected");
+            Assert(9 == offsetToImpulseToEat, $"ImpulseToEat is {offsetToImpulseToEat}, not 9 as expected");
 
             offsetToSimuuEnergy = reader.GetOrdinal("StatEnergy");
-            Assert(9 == offsetToSimuuEnergy, $"SimuuEnergy is {offsetToSimuuEnergy}, not 9 as expected");
+            Assert(10 == offsetToSimuuEnergy, $"SimuuEnergy is {offsetToSimuuEnergy}, not 10 as expected");
 
             offsetToSimuuThirst = reader.GetOrdinal("StatThirst");
-            Assert(10 == offsetToSimuuThirst, $"SimuuThirst is {offsetToSimuuThirst}, not 10 as expected");
+            Assert(11 == offsetToSimuuThirst, $"SimuuThirst is {offsetToSimuuThirst}, not 11 as expected");
 
             offsetToSimuuHunger = reader.GetOrdinal("StatHunger");
-            Assert(11 == offsetToSimuuHunger, $"SimuuHunger is {offsetToSimuuHunger}, not 11 as expected");
+            Assert(12 == offsetToSimuuHunger, $"SimuuHunger is {offsetToSimuuHunger}, not 12 as expected");
 
             offsetToSimuuMovementSpeed = reader.GetOrdinal("StatMovementSpeed");
-            Assert(12 == offsetToSimuuMovementSpeed, $"SimuuMovementSpeed is {offsetToSimuuMovementSpeed}, not 12 as expected");
+            Assert(13 == offsetToSimuuMovementSpeed, $"SimuuMovementSpeed is {offsetToSimuuMovementSpeed}, not 13 as expected");
 
             offsetToSimuuSenseRadius = reader.GetOrdinal("StatSenseRadius");
-            Assert(13 == offsetToSimuuSenseRadius, $"SimuuSenseRadius is {offsetToSimuuSenseRadius}, not 13 as expected");
+            Assert(14 == offsetToSimuuSenseRadius, $"SimuuSenseRadius is {offsetToSimuuSenseRadius}, not 14 as expected");
 
             offsetToUserID = reader.GetOrdinal("UserID");
-            Assert(14 == offsetToUserID, $"UserID is {offsetToUserID}, not 14 as expected");
+            Assert(15 == offsetToUserID, $"UserID is {offsetToUserID}, not 15 as expected");
 
             // ----- Users ----- //
             offsetToUserName = reader.GetOrdinal("UserName");
-            Assert(15 == offsetToUserName, $"UserName is {offsetToUserName}, not 15 as expected");
+            Assert(16 == offsetToUserName, $"UserName is {offsetToUserName}, not 16 as expected");
 
             offsetToUserEmail = reader.GetOrdinal("UserEmail");
-            Assert(16 == offsetToUserEmail, $"UserEmail is {offsetToUserEmail}, not 16 as expected");
+            Assert(17 == offsetToUserEmail, $"UserEmail is {offsetToUserEmail}, not 17 as expected");
 
             offsetToPasswordHash = reader.GetOrdinal("PasswordHash");
-            Assert(17 == offsetToPasswordHash, $"PasswordHash is {offsetToPasswordHash}, not 17 as expected");
+            Assert(18 == offsetToPasswordHash, $"PasswordHash is {offsetToPasswordHash}, not 18 as expected");
 
             offsetToPasswordSalt = reader.GetOrdinal("PasswordSalt");
-            Assert(18 == offsetToPasswordSalt, $"PasswordSalt is {offsetToPasswordSalt}, not 18 as expected");
+            Assert(19 == offsetToPasswordSalt, $"PasswordSalt is {offsetToPasswordSalt}, not 19 as expected");
 
             offsetToRoleID = reader.GetOrdinal("RoleID");
-            Assert(19 == offsetToRoleID, $"RoleID is {offsetToRoleID}, not 19 as expected");
+            Assert(20 == offsetToRoleID, $"RoleID is {offsetToRoleID}, not 20 as expected");
         }
 
 
@@ -111,7 +115,8 @@ namespace DataAccessLayer
             proposedReturnValue.SimuuAge = reader.GetInt32(offsetToSimuuAge);
             proposedReturnValue.SimuuBirth = GetDateTimeOrDefault(reader, offsetToSimuuBirth, DateTime.MinValue); // maybe dont
             proposedReturnValue.SimuuDeath = GetDateTimeOrDefault(reader, offsetToSimuuDeath, DateTime.MinValue); // Maybe dont
-            proposedReturnValue.SimuuCoordinates = reader.GetString(offsetToSimuuCoordinates);
+            proposedReturnValue.SimuuXCoordinate = reader.GetInt32(offsetToSimuuXCoordinate);
+            proposedReturnValue.SimuuYCoordinate = reader.GetInt32(offsetToSimuuYCoordinate);
             proposedReturnValue.ImpulseToRest = reader.GetInt32(offsetToImpulseToRest);
             proposedReturnValue.ImpulseToDrink = reader.GetInt32(offsetToImpulseToDrink);
             proposedReturnValue.ImpulseToEat = reader.GetInt32(offsetToImpulseToEat);

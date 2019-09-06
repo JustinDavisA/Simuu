@@ -55,7 +55,6 @@ namespace Simuu.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    ViewBag.Users = ctx.User_FindByUserName(info.UserName);
                     return View(info);
                 }
                 BusinessLogicLayer.UserBLL user = ctx.User_FindByUserName(info.UserName);
