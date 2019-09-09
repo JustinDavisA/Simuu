@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace BusinessLogicLayer
 {
@@ -33,57 +34,43 @@ namespace BusinessLogicLayer
             // Get random facing direction Up, Right, Down, Left
             int facing = RandomInt(1, 5);
 
-            // Steps taken in a direction
-            int moveLength = RandomInt(1, 6);
-
             // check facing and move
             if (facing == 1)
             {
-                for (int i = 0; i < moveLength; i++)
-                {
-                    entity.SimuuYCoordinate += entity.SimuuMovementSpeed;
-                }
+                entity.SimuuYCoordinate += entity.SimuuMovementSpeed;
             }
             else if (facing == 2)
             {
-                for (int i = 0; i < moveLength; i++)
-                {
-                    entity.SimuuXCoordinate += entity.SimuuMovementSpeed;
-                }
+                entity.SimuuXCoordinate += entity.SimuuMovementSpeed;
             }
             else if (facing == 3)
             {
-                for (int i = 0; i < moveLength; i++)
-                {
-                    entity.SimuuYCoordinate -= entity.SimuuMovementSpeed;
-                }
+                entity.SimuuYCoordinate -= entity.SimuuMovementSpeed;
             }
             else if (facing == 4)
             {
-                for (int i = 0; i < moveLength; i++)
-                {
-                    entity.SimuuXCoordinate -= entity.SimuuMovementSpeed;
-                }
+                entity.SimuuXCoordinate -= entity.SimuuMovementSpeed;
             }
         }
 
         public void SimuuBoundsBump(SimuuBLL entity)
         {
-            if (entity.SimuuXCoordinate < 25)
+            if (entity.SimuuXCoordinate < 50)
             {
-                entity.SimuuXCoordinate += 15;
+                entity.SimuuXCoordinate += 25;
             }
-            if (entity.SimuuXCoordinate > (WIDTH - 25))
+            else if (entity.SimuuXCoordinate > (WIDTH - 50))
             {
-                entity.SimuuXCoordinate -= 15;
+                entity.SimuuXCoordinate -= 25;
             }
-            if (entity.SimuuYCoordinate < 25)
+
+            if (entity.SimuuYCoordinate < 50)
             {
-                entity.SimuuYCoordinate += 15;
+                entity.SimuuYCoordinate += 25;
             }
-            if (entity.SimuuYCoordinate > (HEIGHT - 25))
+            else if (entity.SimuuYCoordinate > (HEIGHT - 50))
             {
-                entity.SimuuYCoordinate -= 15;
+                entity.SimuuYCoordinate -= 25;
             }
         }
 
@@ -123,7 +110,7 @@ namespace BusinessLogicLayer
         {
             if ((TestSenseCollision(entity1, entity2) == true) && (entity1 != entity2))
             {
-                Console.WriteLine(entity1 + " and " + entity2 + " are Colliding");
+                Console.WriteLine(entity1.SimuuName + " and " + entity2.SimuuName + " are Colliding");
             }
         }
 

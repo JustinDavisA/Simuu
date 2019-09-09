@@ -14,7 +14,8 @@
         <h2>Users</h2>
 
         <p>
-            @Html.ActionLink("Create New", "Create")
+            @Html.ActionLink("Create New", "Create") |
+            @Html.ActionLink("Create New with Simuu", "Create", "UserSimuu")
         </p>
 
         @{
@@ -38,9 +39,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.UserEmail)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.PasswordHash)
-                </th>
+                </th>*@
                 @*<th>
                     @Html.DisplayNameFor(model => model.PasswordSalt)
                 </th>*@
@@ -68,9 +69,9 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.UserEmail)
                     </td>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.PasswordHash)
-                    </td>
+                    </td>*@
                     @*<td>
                         @Html.DisplayFor(modelItem => item.PasswordSalt)
                     </td>*@

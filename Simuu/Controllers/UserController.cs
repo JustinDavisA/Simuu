@@ -103,7 +103,7 @@ namespace Simuu.Controllers
                 }
                 using (ContextBLL ctx = new ContextBLL())
                 {
-                    BusinessLogicLayer.UserBLL user = ctx.User_FindByUserName(collection.UserName);
+                    UserBLL user = ctx.User_FindByUserName(collection.UserName);
                     user = new UserBLL();
                     user.UserName = collection.UserName;
                     user.UserEmail = collection.UserEmail;

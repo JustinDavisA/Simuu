@@ -150,6 +150,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\Simuu.png" />
+    <Content Include="Images\SimuuLogo.png" />
     <Content Include="Images\SimuuWorld.png" />
     <Content Include="Images\stars.png" />
     <Content Include="Scripts\bootstrap.js" />

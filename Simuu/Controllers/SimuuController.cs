@@ -86,6 +86,8 @@ namespace Simuu.Controllers
         {
             SimuuBLL defSimuu = new SimuuBLL();
             defSimuu.UserID = 0;
+            defSimuu.SimuuBirth = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+            defSimuu.SimuuDeath = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
             ViewBag.Users = GetUserItems();
             return View(defSimuu);
         }

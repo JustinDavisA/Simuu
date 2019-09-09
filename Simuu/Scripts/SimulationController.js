@@ -3,7 +3,7 @@
 var ctx = document.getElementById("ctx").getContext("2d");
 
 // Canvas setup
-ctx.font = '30px Arial';
+ctx.font = '10px Arial';
 var WIDTH = 500;
 var HEIGHT = 500;
 
@@ -61,13 +61,25 @@ for (var simuuObject in simuuArrayList) {
 // Update canvas- simuu graphic based on X and Y coord
 UpdateSimuuGFX = function (entity) {
     ctx.save();
-    ctx.drawImage(simuuImage, 0, 0, 54, 44, entity.SimuuXCoordinate, entity.SimuuYCoordinate, 23, 22);
+
+    ctx.globalAlpha = 0.3;
+    ctx.beginPath();
+    ctx.arc(entity.SimuuXCoordinate + 10, entity.SimuuYCoordinate + 12, entity.SimuuSenseRadius, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.fillStyle = "red";
+    ctx.fill();
+
+    ctx.globalAlpha = 1;
+    ctx.drawImage(simuuImage, 0, 0, 54, 44, entity.SimuuXCoordinate, entity.SimuuYCoordinate, 20, 20);
+    ctx.fillStyle = "black";
+    ctx.fillText(entity.SimuuName, entity.SimuuXCoordinate - 4, entity.SimuuYCoordinate - 5);
     ctx.restore();
 }
 
 
 // Update Entire Simulation
 Update = function () {
+    //window.location.reload();
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
     for (var simuu in simuuList) {
         UpdateSimuuGFX(simuuList[simuu]);
@@ -77,5 +89,5 @@ Update = function () {
 
 
 // Set update framerate
-setInterval(Update, 200);
+setInterval(Update, 300);
 

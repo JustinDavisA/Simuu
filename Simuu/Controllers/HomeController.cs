@@ -51,31 +51,40 @@ namespace Simuu.Controllers
         [HttpPost]
         public ActionResult Register(RegistrationModel info)
         {
-            using (ContextBLL ctx = new ContextBLL())
+            try
             {
-                if (!ModelState.IsValid)
+                using (ContextBLL ctx = new ContextBLL())
                 {
-                    ViewBag.Users = ctx.User_FindByUserName(info.UserName);
-                    return View(info);
-                }
-                UserBLL user = ctx.User_FindByUserName(info.UserName);
-                if (user != null)
-                {
-                    info.Message = $"The Username '{info.UserName}' already exists in the database";
-                    return View(info);
-                }
-                user = new UserBLL();
-                user.UserName = info.UserName;
-                user.UserEmail = info.UserEmail;
-                user.PasswordSalt = System.Web.Helpers.Crypto.GenerateSalt(Constants.SaltSize);
-                user.PasswordHash = System.Web.Helpers.Crypto.HashPassword(info.Password + user.PasswordSalt);
-                user.RoleID = 3;
+                    if (!ModelState.IsValid)
+                    {
+                        ViewBag.Users = ctx.User_FindByUserName(info.UserName);
+                        return View(info);
+                    }
+                    UserBLL user = ctx.User_FindByUserName(info.UserName);
+                    if (user != null)
+                    {
+                        info.Message = $"The Username '{info.UserName}' already exists in the database";
+                        return View(info);
+                    }
+                    user = new UserBLL();
+                    user.UserName = info.UserName;
+                    user.UserEmail = info.UserEmail;
+                    user.PasswordSalt = System.Web.Helpers.Crypto.GenerateSalt(Constants.SaltSize);
+                    user.PasswordHash = System.Web.Helpers.Crypto.HashPassword(info.Password + user.PasswordSalt);
+                    user.RoleID = 3;
 
-                ctx.User_Create(user);
-                Session["AUTHUsername"] = user.UserName;
-                Session["AUTHRoles"] = user.RoleName;
-                Session["AUTHTYPE"] = "HASHED";
-                return RedirectToAction("Index");
+                    ctx.User_Create(user);
+                    Session["AUTHUsername"] = user.UserName;
+                    Session["AUTHRoles"] = user.RoleName;
+                    Session["AUTHTYPE"] = "HASHED";
+                    return RedirectToAction("Index");
+                }
+
+            }
+            catch (Exception)
+            {
+                info.Message = $"Required fields left blank!";
+                return View(info);
             }
         }
 
@@ -136,6 +145,8 @@ namespace Simuu.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel info)
         {
+            try
+            {
             using (ContextBLL ctx = new ContextBLL())
             {
                 if (!ModelState.IsValid)
@@ -174,6 +185,13 @@ namespace Simuu.Controllers
                     return Redirect(info.ReturnURL);
                 }
                 info.Message = "The password was incorrect";
+                return View(info);
+                }
+
+            }
+            catch (Exception)
+            {
+                info.Message = $"Required fields left blank!";
                 return View(info);
             }
         }
