@@ -5,11 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 
 using BusinessLogicLayer;
-using Simuu;
 
 namespace Simuu.Controllers
 {
-    [MustBeInRole(Roles = Constants.AdminRoleName)]
+    [MustBeInRole(Roles = "Administrator,PowerUser")]
     public class SimuuController : Controller
     {
 

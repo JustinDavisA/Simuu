@@ -4,79 +4,82 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+    <div class="sizer">
 
-<div>
-    <h4>UserBLL</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        @*<dt>
-            @Html.DisplayNameFor(model => model.UserID)
-        </dt>
+        <h2>Details</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserID)
-        </dd>*@
+        <div>
+            <h4>UserBLL</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.UserID)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.UserID)
+                </dd>*@
 
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UserEmail)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.UserName)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserEmail)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.UserEmail)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PasswordHash)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.UserEmail)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PasswordHash)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PasswordHash)
+                </dt>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.PasswordSalt)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PasswordHash)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PasswordSalt)
-        </dd>*@
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.PasswordSalt)
+                </dt>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.RoleID)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PasswordSalt)
+                </dd>*@
 
-        <dd>
-            @Html.DisplayFor(model => model.RoleID)
-        </dd>*@
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.RoleID)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RoleName)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.RoleID)
+                </dd>*@
 
-        <dd>
-            @Html.DisplayFor(model => model.RoleName)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.RoleName)
+                </dt>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.RolePermissions)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.RoleName)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.RolePermissions)
-        </dd>*@
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.RolePermissions)
+                </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                <dd>
+                    @Html.DisplayFor(model => model.RolePermissions)
+                </dd>*@
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+        </div>

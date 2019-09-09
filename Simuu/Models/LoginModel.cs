@@ -10,6 +10,9 @@ namespace Simuu
     public class LoginModel
     {
 
+        #region DIRECT PROPERTIES
+
+
         [Required]
         public string UserName { get; set; }
 
@@ -21,6 +24,9 @@ namespace Simuu
         public string Message { get; set; }
 
         public string ReturnURL { get; set; }
+
+
+        #endregion
 
     }
 }

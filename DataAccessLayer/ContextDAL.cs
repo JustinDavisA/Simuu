@@ -45,7 +45,7 @@ namespace DataAccessLayer
             }
             else
             {
-                // Do nothing - No available connection states
+                // Do nothing - No available or reasonable connection states
             }
         }
 

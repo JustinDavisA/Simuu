@@ -11,17 +11,21 @@ namespace BusinessLogicLayer
 
         public List<SimuuBLL> mySimuus { get; set; }
 
-        // Declare variables to handle canvas size and borders
-        int WIDTH = 1280;
-        int HEIGHT = 720;
+        // Declare variables to handle canvas size and border bounds
+        int WIDTH = 500;
+        int HEIGHT = 500;
+
+        // Declare random now to not repeat seed in loop
+        Random ran = new Random();
 
         // Get a random number within a range
         public int RandomInt(int min, int max)
         {
-            Random ran = new Random();
-            int ret = ran.Next(min, max);
-            return ret;
+            return ran.Next(min, max);
         }
+
+
+        #region SIMUU MOVEMENT
 
         // Wander movement loop
         public void SimuuWander(SimuuBLL entity)
@@ -63,24 +67,37 @@ namespace BusinessLogicLayer
             }
         }
 
+        public void SimuuBoundsBump(SimuuBLL entity)
+        {
+            if (entity.SimuuXCoordinate < 25)
+            {
+                entity.SimuuXCoordinate += 15;
+            }
+            if (entity.SimuuXCoordinate > (WIDTH - 25))
+            {
+                entity.SimuuXCoordinate -= 15;
+            }
+            if (entity.SimuuYCoordinate < 25)
+            {
+                entity.SimuuYCoordinate += 15;
+            }
+            if (entity.SimuuYCoordinate > (HEIGHT - 25))
+            {
+                entity.SimuuYCoordinate -= 15;
+            }
+        }
+
         // Update Simuu Position
         public void UpdateSimuuPosition(SimuuBLL entity)
         {
+            SimuuBoundsBump(entity);
             SimuuWander(entity);
-
-            // Bounce off of left and right edge if leaving bounds
-            if (entity.SimuuXCoordinate < 15 || entity.SimuuXCoordinate > WIDTH)
-            {
-                Console.WriteLine(entity + " crossed bounds. Bouncing back.");
-                entity.SimuuMovementSpeed = -entity.SimuuMovementSpeed;
-            }
-            // Bounce off of top and bottom edge if leaving bounds
-            if (entity.SimuuYCoordinate < 15 || entity.SimuuYCoordinate > HEIGHT)
-            {
-                Console.WriteLine(entity + " crossed bounds. Bouncing back.");
-                entity.SimuuMovementSpeed = -entity.SimuuMovementSpeed;
-            }
         }
+
+        #endregion
+
+
+        #region SIMUU COLLISION
 
         // Get distance between two simuus
         public double DistanceBetweenSimuus(SimuuBLL simuu1, SimuuBLL simuu2)
@@ -102,7 +119,7 @@ namespace BusinessLogicLayer
         }
 
         // Check simuu collision states
-        public void CheckSimuuCollision(SimuuBLL entity1, SimuuBLL entity2)
+        public void SimuuCollisionHandler(SimuuBLL entity1, SimuuBLL entity2)
         {
             if ((TestSenseCollision(entity1, entity2) == true) && (entity1 != entity2))
             {
@@ -110,12 +127,19 @@ namespace BusinessLogicLayer
             }
         }
 
+        #endregion
+
+
         // All processes run here
         public void Process()
         {
             foreach (var simuu1 in mySimuus)
             {
                 UpdateSimuuPosition(simuu1);
+                foreach (var simuu2 in mySimuus)
+                {
+                    SimuuCollisionHandler(simuu1, simuu2);
+                }
             }
         }
 

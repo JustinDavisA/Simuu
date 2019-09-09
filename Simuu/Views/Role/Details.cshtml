@@ -4,39 +4,42 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Read</h2>
+    <div class="sizer">
 
-<div>
-    <h4>RoleBLL</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        @*<dt>
-            @Html.DisplayNameFor(model => model.RoleID)
-        </dt>*@
+        <h2>Read</h2>
 
-        @*<dd>
-            @Html.DisplayFor(model => model.RoleID)
-        </dd>*@
+        <div>
+            <h4>RoleBLL</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.RoleID)
+                </dt>*@
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RoleName)
-        </dt>
+                @*<dd>
+                    @Html.DisplayFor(model => model.RoleID)
+                </dd>*@
 
-        <dd>
-            @Html.DisplayFor(model => model.RoleName)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.RoleName)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RolePermissions)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.RoleName)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.RolePermissions)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.RolePermissions)
+                </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.RoleID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                <dd>
+                    @Html.DisplayFor(model => model.RolePermissions)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.RoleID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+        </div>

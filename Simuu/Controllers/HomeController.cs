@@ -51,13 +51,14 @@ namespace Simuu.Controllers
         [HttpPost]
         public ActionResult Register(RegistrationModel info)
         {
-            using (BusinessLogicLayer.ContextBLL ctx = new BusinessLogicLayer.ContextBLL())
+            using (ContextBLL ctx = new ContextBLL())
             {
                 if (!ModelState.IsValid)
                 {
+                    ViewBag.Users = ctx.User_FindByUserName(info.UserName);
                     return View(info);
                 }
-                BusinessLogicLayer.UserBLL user = ctx.User_FindByUserName(info.UserName);
+                UserBLL user = ctx.User_FindByUserName(info.UserName);
                 if (user != null)
                 {
                     info.Message = $"The Username '{info.UserName}' already exists in the database";
@@ -135,14 +136,14 @@ namespace Simuu.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel info)
         {
-            using (BusinessLogicLayer.ContextBLL ctx = new BusinessLogicLayer.ContextBLL())
+            using (ContextBLL ctx = new ContextBLL())
             {
                 if (!ModelState.IsValid)
                 {
                     ViewBag.Users = ctx.User_FindByUserName(info.UserName);
                     return View(info);
                 }
-                BusinessLogicLayer.UserBLL user = ctx.User_FindByUserName(info.UserName);
+                UserBLL user = ctx.User_FindByUserName(info.UserName);
                 if (user == null)
                 {
                     info.Message = $"The Username '{info.UserName}' does not exist in the database";
@@ -155,9 +156,15 @@ namespace Simuu.Controllers
                 if (!validateduser)
                 {
                     potential = info.Password + user.PasswordSalt;
-
-                    validateduser = System.Web.Helpers.Crypto.VerifyHashedPassword(actual, potential);
-                    ValidationType = $"HASHED:({user.UserID})";
+                    try
+                    {
+                        validateduser = System.Web.Helpers.Crypto.VerifyHashedPassword(actual, potential);
+                        ValidationType = $"HASHED:({user.UserID})";
+                    }
+                    catch (Exception)
+                    {
+                        validateduser = false;
+                    }
                 }
                 if (validateduser)
                 {

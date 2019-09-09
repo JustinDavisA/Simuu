@@ -23,13 +23,23 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Simuu-lation", "Simulation", "Home")</li>
-                    @if (User.IsInRole(Constants.AdminRoleName))
+                    @if (User.IsInRole(Constants.NormalRoleName))
                     {
-                        <li>@Html.ActionLink("Roles", "Index", "Role")</li>
-                        <li>@Html.ActionLink("Users", "Index", "User")</li>
-                        <li>@Html.ActionLink("Simuus", "Index", "Simuu")</li>
-                        <li>@Html.ActionLink("Items", "Index", "Item")</li>
+                        <li> @Html.ActionLink("Simuu-lation", "Simulation", "Home") </li>
+                    }
+                    else if (User.IsInRole(Constants.PowerRoleName))
+                    {
+                        <li> @Html.ActionLink("Simuu-lation", "Simulation", "Home") </li>
+                        <li> @Html.ActionLink("Simuus", "Index", "Simuu") </li>
+                        <li> @Html.ActionLink("Items", "Index", "Item") </li>
+                    }
+                    else if (User.IsInRole(Constants.AdminRoleName))
+                    {
+                        <li> @Html.ActionLink("Simuu-lation", "Simulation", "Home") </li>
+                        <li> @Html.ActionLink("Simuus", "Index", "Simuu") </li>
+                        <li> @Html.ActionLink("Items", "Index", "Item") </li>
+                        <li> @Html.ActionLink("Roles", "Index", "Role") </li>
+                        <li> @Html.ActionLink("Users", "Index", "User") </li>
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -49,7 +59,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Simuu Worlds Inc. All Rights Reserved</p>
         </footer>
     </div>
 

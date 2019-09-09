@@ -9,162 +9,165 @@
     int CorrectedPageButtonCount = (TotalPageButtonCount > 9) ? 10 : TotalPageButtonCount;
 }
 
-<h2>Index</h2>
+    <div class="sizer">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+        <h2>Index</h2>
 
-@{
-    for (int i = 0; i < CorrectedPageButtonCount; i++)
-    {
-        string classstring = (i == PageNumber) ? "btn btn-sm btn-success glyphicon glyphicon-star-empty" : "btn btn-sm btn-normal glyphicon glyphicon-asterisk";
-        @Html.ActionLink($"-Page {i}-", "Page", new { PageNumber = i, PageSize = PageSize },
-       new { @class = classstring });
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
 
-    }
-}
+        @{
+            for (int i = 0; i < CorrectedPageButtonCount; i++)
+            {
+                string classstring = (i == PageNumber) ? "btn btn-sm btn-success glyphicon glyphicon-star-empty" : "btn btn-sm btn-normal glyphicon glyphicon-asterisk";
+                @Html.ActionLink($"-Page {i}-", "Page", new { PageNumber = i, PageSize = PageSize },
+               new { @class = classstring });
 
-<table class="table">
-    <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.SimuuID)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.SimuuName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SimuuAge)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SimuuBirth)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SimuuDeath)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SimuuXCoordinate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SimuuYCoordinate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImpulseToRest)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImpulseToDrink)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImpulseToEat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StatEnergy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StatThirst)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StatHunger)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SimuuMovementSpeed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SimuuSenseRadius)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.UserID)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.UserEmail)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.PasswordHash)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.PasswordSalt)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.RoleID)
-        </th>*@
-        <th></th>
-    </tr>
+            }
+        }
 
-    @foreach (var item in Model)
-    {
-<tr>
-    @*<td>
-            @Html.DisplayFor(modelItem => item.SimuuID)
-        </td>*@
-    <td>
-        @Html.DisplayFor(modelItem => item.SimuuName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SimuuAge)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SimuuBirth)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SimuuDeath)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SimuuXCoordinate)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SimuuYCoordinate)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ImpulseToRest)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ImpulseToDrink)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ImpulseToEat)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.StatEnergy)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.StatThirst)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.StatHunger)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SimuuMovementSpeed)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SimuuSenseRadius)
-    </td>
-    @*<td>
-            @Html.DisplayFor(modelItem => item.UserID)
-        </td>*@
-    <td>
-        @Html.DisplayFor(modelItem => item.UserName)
-    </td>
-    @*<td>
-            @Html.DisplayFor(modelItem => item.UserEmail)
-        </td>*@
-    @*<td>
-            @Html.DisplayFor(modelItem => item.PasswordHash)
-        </td>*@
-    @*<td>
-            @Html.DisplayFor(modelItem => item.PasswordSalt)
-        </td>*@
-    @*<td>
-            @Html.DisplayFor(modelItem => item.RoleID)
-        </td>*@
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.SimuuID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.SimuuID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.SimuuID })
-    </td>
-</tr>
-    }
+        <table class="table">
+            <tr>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.SimuuID)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.SimuuName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SimuuAge)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.SimuuBirth)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.SimuuDeath)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.SimuuXCoordinate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SimuuYCoordinate)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.ImpulseToRest)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.ImpulseToDrink)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.ImpulseToEat)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.StatEnergy)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.StatThirst)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.StatHunger)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.SimuuMovementSpeed)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.SimuuSenseRadius)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.UserID)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.UserEmail)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.PasswordHash)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.PasswordSalt)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.RoleID)
+                </th>*@
+                <th></th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.SimuuID)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SimuuName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SimuuAge)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.SimuuBirth)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.SimuuDeath)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SimuuXCoordinate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SimuuYCoordinate)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.ImpulseToRest)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.ImpulseToDrink)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.ImpulseToEat)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.StatEnergy)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.StatThirst)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.StatHunger)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.SimuuMovementSpeed)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.SimuuSenseRadius)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.UserID)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.UserEmail)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.PasswordHash)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.PasswordSalt)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.RoleID)
+                    </td>*@
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.SimuuID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.SimuuID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.SimuuID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>

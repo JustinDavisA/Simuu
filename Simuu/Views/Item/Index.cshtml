@@ -9,102 +9,105 @@
     int CorrectedPageButtonCount = (TotalPageButtonCount > 9) ? 10 : TotalPageButtonCount;
 }
 
-<h2>Index</h2>
+    <div class="sizer">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+        <h2>Items</h2>
 
-@{
-    for (int i = 0; i < CorrectedPageButtonCount; i++)
-    {
-        string classstring = (i == PageNumber) ? "btn btn-sm btn-success glyphicon glyphicon-star-empty" : "btn btn-sm btn-normal glyphicon glyphicon-asterisk";
-        @Html.ActionLink($"-Page {i}-", "Page", new { PageNumber = i, PageSize = PageSize },
-       new { @class = classstring });
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
 
-    }
-}
+        @{
+            for (int i = 0; i < CorrectedPageButtonCount; i++)
+            {
+                string classstring = (i == PageNumber) ? "btn btn-sm btn-success glyphicon glyphicon-star-empty" : "btn btn-sm btn-normal glyphicon glyphicon-asterisk";
+                @Html.ActionLink($"-Page {i}-", "Page", new { PageNumber = i, PageSize = PageSize },
+               new { @class = classstring });
 
-<table class="table">
-    <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.ItemID)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.ItemName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemEnergyModifier)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemThirstModifier)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemHungerModifier)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.UserID)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.UserEmail)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.PasswordHash)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.PasswordSalt)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.RoleID)
-        </th>*@
-        <th></th>
-    </tr>
+            }
+        }
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.ItemID)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemEnergyModifier)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemThirstModifier)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemHungerModifier)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.UserID)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.UserEmail)
-            </td>*@
-            @*<td>
-                @Html.DisplayFor(modelItem => item.PasswordHash)
-            </td>*@
-            @*<td>
-                @Html.DisplayFor(modelItem => item.PasswordSalt)
-            </td>*@
-            @*<th>
-                @Html.DisplayNameFor(model => model.RoleID)
-            </th>*@
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ItemID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ItemID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ItemID })
-            </td>
-        </tr>
-    }
+        <table class="table">
+            <tr>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.ItemID)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemEnergyModifier)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemThirstModifier)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemHungerModifier)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.UserID)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.UserEmail)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.PasswordHash)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.PasswordSalt)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.RoleID)
+                </th>*@
+                <th></th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.ItemID)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemEnergyModifier)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemThirstModifier)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemHungerModifier)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.UserID)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.UserEmail)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.PasswordHash)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.PasswordSalt)
+                    </td>*@
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.RoleID)
+                    </th>*@
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ItemID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ItemID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ItemID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>

@@ -36,7 +36,7 @@ namespace Simuu
 
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            if (this.Roles.Split(' ').Any(filterContext.HttpContext.User.IsInRole))
+            if (this.Roles.Split(',').Any(filterContext.HttpContext.User.IsInRole))
             {
                 base.OnAuthorization(filterContext);
             }

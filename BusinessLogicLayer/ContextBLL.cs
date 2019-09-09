@@ -418,7 +418,8 @@ namespace BusinessLogicLayer
         #endregion
 
 
-        #region Simuu Processing
+        #region PROCESSING
+
 
         public List<SimuuBLL> ProcessSimuus()
         {
@@ -432,6 +433,7 @@ namespace BusinessLogicLayer
             }
             return simLog.mySimuus;
         }
+
 
         #endregion
 

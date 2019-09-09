@@ -208,7 +208,7 @@ namespace Simuu.Controllers
             }
         }
 
-
+        // GET: Simulation Data to JSON in prep for JavaScript XMLHTTP 'GET'
         public ActionResult GetSimulationSimuus()
         {
             try
@@ -225,9 +225,6 @@ namespace Simuu.Controllers
                 return View("Error");
             }
         }
-
-
-
 
     }
 }

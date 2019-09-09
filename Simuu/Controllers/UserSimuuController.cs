@@ -7,6 +7,7 @@ using BusinessLogicLayer;
 
 namespace Simuu.Controllers
 {
+    [MustBeInRole(Roles = Constants.AdminRoleName)]
     public class UserSimuuController : Controller
     {
 

@@ -11,6 +11,9 @@ namespace Simuu
     public class RegistrationModel
     {
 
+        #region DIRECT PROPERTIES
+
+
         [Required]
         public string UserName { get; set; }
 
@@ -32,6 +35,9 @@ namespace Simuu
         public string PasswordVerify { get; set; }
         
         public string Message { get; set; }
+
+
+        #endregion
 
     }
 }

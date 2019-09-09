@@ -1,7 +1,0 @@
-C:\Users\Onshore\source\repos\Simuu\AILayer\bin\Debug\AILayer.exe.config
-C:\Users\Onshore\source\repos\Simuu\AILayer\bin\Debug\AILayer.exe
-C:\Users\Onshore\source\repos\Simuu\AILayer\bin\Debug\AILayer.pdb
-C:\Users\Onshore\source\repos\Simuu\AILayer\obj\Debug\AILayer.csprojAssemblyReference.cache
-C:\Users\Onshore\source\repos\Simuu\AILayer\obj\Debug\AILayer.csproj.CoreCompileInputs.cache
-C:\Users\Onshore\source\repos\Simuu\AILayer\obj\Debug\AILayer.exe
-C:\Users\Onshore\source\repos\Simuu\AILayer\obj\Debug\AILayer.pdb
