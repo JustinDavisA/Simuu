@@ -22,7 +22,7 @@ namespace DataAccessLayer
         int offsetToRoleName;
         int offsetToRolePermissions;
 
-
+        // Map and match column names and numbers- consistent shape
         public UserMapper(System.Data.SqlClient.SqlDataReader reader)
         {
             // ----- Users ----- //
@@ -53,7 +53,7 @@ namespace DataAccessLayer
 
         }
         
-
+        // setup for use with BLL
         public UserDAL UserFromReader(System.Data.SqlClient.SqlDataReader reader)
         {
             UserDAL proposedReturnValue = new UserDAL();

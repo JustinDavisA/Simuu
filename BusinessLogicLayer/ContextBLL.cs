@@ -24,7 +24,6 @@ namespace BusinessLogicLayer
         bool Log(Exception ex)
         {
             Console.WriteLine(ex);
-            // LoggingLayer.Logger.Log(ex);   Where did I put this? It works
             return false;
         }
 

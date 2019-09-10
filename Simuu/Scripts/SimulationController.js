@@ -19,7 +19,7 @@ GetJSON = function (url) {
 }
 
 
-// Simuu Mapper function
+// Simuu Mapper function- setup object for use in visual update
 MapSimuu = function (entity) {
     var simuu = {
         SimuuID: entity.SimuuID,
@@ -58,7 +58,7 @@ for (var simuuObject in simuuArrayList) {
 }
 
 
-// Update canvas- simuu graphic based on X and Y coord
+// Update canvas- simuu graphic and sense graphuc based on X and Y coord
 UpdateSimuuGFX = function (entity) {
     ctx.save();
 
